@@ -1,0 +1,17 @@
+questions:
+  - question: "What is the capital of Canada?"
+    answers:
+      - option: "Toronto"
+        correct: true
+      - option: "Ottawa"
+        correct: false
+      - option: "Vancouver"
+        correct: false
+  - question: "What is 2 + 2?"
+    answers:
+      - option: "3"
+        correct: false
+      - option: "4"
+        correct: true
+      - option: "5"
+        correct: false
