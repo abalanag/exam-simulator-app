@@ -3,20 +3,18 @@ package com.simulator.exam.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import com.simulator.exam.entity.Answer;
 import com.simulator.exam.entity.Question;
+import com.simulator.exam.exception.DuplicateAnswerException;
 import com.simulator.exam.repository.AnswerRepository;
+import jakarta.persistence.EntityExistsException;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AnswerService {
 
     private final AnswerRepository answerRepository;
-
-    private static final Logger logger = Logger.getLogger("application.logger");
 
     public AnswerService(final AnswerRepository answerRepository) {
         this.answerRepository = answerRepository;
@@ -43,9 +41,9 @@ public class AnswerService {
         answers.forEach(answer -> {
             try {
                 answerRepository.save(answer);
-            } catch (final RuntimeException e) {
-                logger.log(Level.SEVERE, String.format("Duplicate answer: %s", answer.getOption()), e);
-                throw e;
+            } catch (final EntityExistsException e) {
+                throw new DuplicateAnswerException("Answer %s for question %s is already persisted", answer.getOption(),
+                        answer.getQuestion().getQuestion(), e);
             }
         });
     }

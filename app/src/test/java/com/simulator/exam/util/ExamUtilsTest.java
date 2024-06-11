@@ -58,6 +58,16 @@ class ExamUtilsTest {
     }
 
     @Test
+    void testGetAllQuestionsFromYamlLocaleFileWithNullFileName() {
+        assertThrows(IllegalArgumentException.class, () -> ExamUtils.getAllQuestionsFromYamlLocaleFile(null, null));
+    }
+
+    @Test
+    void testGetAllQuestionsFromYamlLocaleFileWithEmptyFileName() {
+        assertThrows(IllegalArgumentException.class, () -> ExamUtils.getAllQuestionsFromYamlLocaleFile("", null));
+    }
+
+    @Test
     void testGetAllQuestionsFromYamlLocaleFileNegative() {
         assertThrows(RuntimeException.class, () -> ExamUtils.getAllQuestionsFromYamlLocaleFile(INVALID_FILE_NAME, invalidModule));
     }

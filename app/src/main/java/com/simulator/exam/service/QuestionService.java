@@ -2,8 +2,6 @@ package com.simulator.exam.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import com.simulator.exam.dto.AnswerDo;
 import com.simulator.exam.dto.QuestionDo;
@@ -20,9 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class QuestionService {
-
-    private static final Logger logger = Logger.getLogger("application.logger");
-
     private final QuestionRepository questionRepository;
 
     private final AnswerService answerService;
@@ -37,22 +32,13 @@ public class QuestionService {
      * Save imported questions to the database ensuring uniqueness.
      *
      * @param questions the list of questions to save
-     * @return true if the questions were saved, false otherwise
      */
-    private boolean saveImportedQuestions(final List<Question> questions) {
+    private void saveImportedQuestions(final List<Question> questions) {
         if (questions.isEmpty()) {
-            return false;
+            return;
         }
 
-        questions.forEach(q -> {
-            try {
-                saveUniqueQuestion(q);
-            } catch (final DuplicateQuestionException e) {
-                logger.log(Level.SEVERE, String.format("Duplicate question: %s", q.getQuestion()), e);
-                throw e;
-            }
-        });
-        return true;
+        questions.forEach(this::saveUniqueQuestion);
     }
 
     /**
@@ -107,7 +93,7 @@ public class QuestionService {
                 .contains(question.getQuestion())) {
             questionRepository.save(new Question(question.getQuestion(), List.of(), question.getModuleEnum()));
         } else {
-            throw new DuplicateQuestionException(question.getQuestion() + " already exists");
+            throw new DuplicateQuestionException("Question %s is already persisted.", question.getQuestion());
         }
     }
 

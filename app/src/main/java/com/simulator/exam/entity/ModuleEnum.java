@@ -24,21 +24,11 @@ public enum ModuleEnum {
     /**
      * Returns the Module enum entry by module number.
      *
-     * @param id
      * @return the enum entry
      */
     public static ModuleEnum byModuleNumber(final int number) {
         for (final ModuleEnum module : ModuleEnum.values()) {
             if (module.getModuleNumber() == number) {
-                return module;
-            }
-        }
-        return null;
-    }
-
-    public static ModuleEnum byModuleName(final String name) {
-        for (final ModuleEnum module : ModuleEnum.values()) {
-            if (module.getModuleName().equals(name)) {
                 return module;
             }
         }

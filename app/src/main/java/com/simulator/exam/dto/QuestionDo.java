@@ -21,7 +21,7 @@ public class QuestionDo {
     @Nullable
     private ModuleEnum moduleEnum;
 
-    public QuestionDo(final String question, final List<AnswerDo> answers, final ModuleEnum moduleEnum) {
+    public QuestionDo(final String question, final List<AnswerDo> answers, @Nullable final ModuleEnum moduleEnum) {
         this.question = question;
         this.answers = answers;
         this.moduleEnum = moduleEnum;

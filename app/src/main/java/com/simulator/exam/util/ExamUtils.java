@@ -2,6 +2,7 @@ package com.simulator.exam.util;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -12,7 +13,10 @@ import com.simulator.exam.dto.QuestionsWrapper;
 import com.simulator.exam.entity.ModuleEnum;
 import com.simulator.exam.entity.Question;
 import com.simulator.exam.exception.LocalFileLoaderException;
-import com.simulator.exam.exception.QuestionParserException;
+import com.simulator.exam.exception.LocalFileNotFoundException;
+import com.simulator.exam.exception.MultipartFileLoaderException;
+import com.simulator.exam.exception.QuestionLoaderException;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
@@ -35,12 +39,19 @@ public class ExamUtils {
      * @return the list of questions
      */
     public static List<Question> getAllQuestionsFromYamlLocaleFile(final String fileName, final ModuleEnum module) {
+        if (!StringUtils.hasText(fileName)) {
+            throw new IllegalArgumentException(
+                    String.format("Null filename or missing for file: %s module %s", fileName, module));
+        }
+
         final File file = new File(String.format(FILE_PATH, fileName));
         try (final InputStream inputStream = new FileInputStream(file)) {
             return loadQuestionsDataFromYaml(inputStream, module);
+        } catch (final FileNotFoundException e) {
+            LOGGER.log(Level.WARNING, String.format("Error reading file: %s", file.getPath()));
+            throw new LocalFileNotFoundException(fileName, FILE_PATH, e);
         } catch (final IOException e) {
-            LOGGER.log(Level.WARNING, String.format("Error reading file: %s: %s", file.getPath(), e.getMessage()));
-            throw new LocalFileLoaderException("Failed to load questions from local file", e);
+            throw new LocalFileLoaderException(fileName, FILE_PATH, module.getModuleName(), e);
         }
     }
 
@@ -55,8 +66,7 @@ public class ExamUtils {
         try (final InputStream inputStream = file.getInputStream()) {
             return loadQuestionsDataFromYaml(inputStream, module);
         } catch (final IOException e) {
-            LOGGER.log(Level.WARNING, String.format("Error reading multipart file: %s", file.getName()), e);
-            throw new RuntimeException("Failed to load questions from multipart file", e);
+            throw new MultipartFileLoaderException("Failed to load questions from multipart file", e);
         }
     }
 
@@ -75,7 +85,7 @@ public class ExamUtils {
         final QuestionsWrapper questionsWrapper = yaml.load(stream);
 
         if (questionsWrapper == null || questionsWrapper.getQuestions() == null) {
-            throw new QuestionParserException("Failed to parse questions from YAML");
+            throw new QuestionLoaderException("Exception encountered during the questions loading from YAML file");
         }
 
         final List<Question> questions = questionsWrapper.getQuestions();
