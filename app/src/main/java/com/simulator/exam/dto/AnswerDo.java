@@ -10,7 +10,8 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class AnswerDo {
-    Long id;
-    String option;
-    boolean correct;
+
+    private Long id;
+    private String option;
+    private boolean correct;
 }

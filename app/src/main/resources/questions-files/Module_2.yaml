@@ -1,5 +1,5 @@
 questions:
-- question: "What does the 'Join point' represent in Aspect-Oriented Programming (AOP)?"
+- description: "What does the 'Join point' represent in Aspect-Oriented Programming (AOP)?"
   answers:
     - option: "The execution of a method."
       correct: true
@@ -10,7 +10,7 @@ questions:
     - option: "The return type of a method."
       correct: false
 
-- question: "Which statement correctly defines a 'Pointcut' in Spring AOP?"
+- description: "Which statement correctly defines a 'Pointcut' in Spring AOP?"
   answers:
     - option: "A set of join points where an advice will be executed."
       correct: true
@@ -21,7 +21,7 @@ questions:
     - option: "The arguments of a method within a join point."
       correct: false
 
-- question: "What is the purpose of 'Advice' in Aspect-Oriented Programming?"
+- description: "What is the purpose of 'Advice' in Aspect-Oriented Programming?"
   answers:
     - option: "The code that is executed within an aspect, such as before, after, or around a join point."
       correct: true
@@ -32,7 +32,7 @@ questions:
     - option: "A dependency injection technique."
       correct: false
 
-- question: "What is an 'Aspect' in Spring AOP?"
+- description: "What is an 'Aspect' in Spring AOP?"
   answers:
     - option: "A class that brings together pointcuts and advice."
       correct: true
@@ -43,7 +43,7 @@ questions:
     - option: "The interface that must be implemented by all advice classes."
       correct: false
 
-- question: "How does 'Around advice' differ from other types of advice in Spring AOP?"
+- description: "How does 'Around advice' differ from other types of advice in Spring AOP?"
   answers:
     - option: "It allows the code to be executed both before and after the join point."
       correct: true
@@ -54,7 +54,7 @@ questions:
     - option: "It executes only after a method returns a value."
       correct: false
 
-- question: "What does 'Point cut expression' determine in Spring AOP?"
+- description: "What does 'Point cut expression' determine in Spring AOP?"
   answers:
     - option: "Criteria under which advice is executed."
       correct: true
@@ -65,21 +65,21 @@ questions:
     - option: "The database transaction management strategy."
       correct: false
 
-- question: "Is it true that an 'Aspect' in Spring AOP can contain multiple advices?"
+- description: "Is it true that an 'Aspect' in Spring AOP can contain multiple advices?"
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Can 'Pointcuts' be reused across different 'Aspects' in Spring AOP?"
+- description: "Can 'Pointcuts' be reused across different 'Aspects' in Spring AOP?"
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "What does the '@Pointcut' annotation define in a Spring application?"
+- description: "What does the '@Pointcut' annotation define in a Spring application?"
   answers:
     - option: "A reusable pointcut expression."
       correct: true
@@ -90,7 +90,7 @@ questions:
     - option: "A specific method to be executed before a database transaction."
       correct: false
 
-- question: "What role does 'Caching' play in Aspect-Oriented Programming within Spring?"
+- description: "What role does 'Caching' play in Aspect-Oriented Programming within Spring?"
   answers:
     - option: "It's used by a cacheable aspect to store and retrieve method call results."
       correct: true
@@ -100,7 +100,7 @@ questions:
       correct: false
     - option: "It's an annotation that disables all aspects in the application."
       correct: false
-- question: "What is the primary purpose of Aspect-Oriented Programming (AOP)?"
+- description: "What is the primary purpose of Aspect-Oriented Programming (AOP)?"
   answers:
     - option: "To create a more readable code and avoid duplicate code."
       correct: true
@@ -113,7 +113,7 @@ questions:
     - option: "To manage application security protocols."
       correct: false
 
-- question: "Which problem does Aspect-Oriented Programming (AOP) solve?"
+- description: "Which problem does Aspect-Oriented Programming (AOP) solve?"
   answers:
     - option: "Implements cross-cutting concerns separately from business logic."
       correct: true
@@ -126,7 +126,7 @@ questions:
     - option: "Reduces the number of objects created in an application."
       correct: false
 
-- question: "What are typical cross-cutting concerns in AOP?"
+- description: "What are typical cross-cutting concerns in AOP?"
   answers:
     - option: "Logging and security."
       correct: true
@@ -139,7 +139,7 @@ questions:
     - option: "Application configuration and setup."
       correct: false
 
-- question: "Which are NOT typical cross-cutting concerns handled by AOP?"
+- description: "Which are NOT typical cross-cutting concerns handled by AOP?"
   answers:
     - option: "User authentication and authorization."
       correct: false
@@ -152,7 +152,7 @@ questions:
     - option: "Application security."
       correct: false
 
-- question: "What issue arises from not addressing cross-cutting concerns via AOP?"
+- description: "What issue arises from not addressing cross-cutting concerns via AOP?"
   answers:
     - option: "Code duplication."
       correct: true
@@ -165,7 +165,7 @@ questions:
     - option: "Database locks."
       correct: false
 
-- question: "How does AOP complement Object-Oriented Programming (OOP)?"
+- description: "How does AOP complement Object-Oriented Programming (OOP)?"
   answers:
     - option: "By separating concerns that cannot be resolved by OOP alone."
       correct: true
@@ -178,7 +178,7 @@ questions:
     - option: "By reducing the use of interfaces and abstract classes."
       correct: false
 
-- question: "Can excessive use of AOP lead to problems in code management?"
+- description: "Can excessive use of AOP lead to problems in code management?"
   answers:
     - option: "Yes, it can make the code harder to read, debug, or maintain."
       correct: true
@@ -191,28 +191,28 @@ questions:
     - option: "No, AOP reduces the overall size of the codebase, simplifying management."
       correct: false
 
-- question: "True or False: AOP should be used as a replacement for OOP."
+- description: "True or False: AOP should be used as a replacement for OOP."
   answers:
     - option: "False"
       correct: true
     - option: "True"
       correct: false
 
-- question: "True or False: Implementing AOP can eliminate the need for code duplication."
+- description: "True or False: Implementing AOP can eliminate the need for code duplication."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "True or False: AOP cannot handle concerns like logging or transaction management."
+- description: "True or False: AOP cannot handle concerns like logging or transaction management."
   answers:
     - option: "False"
       correct: true
     - option: "True"
       correct: false
 
-- question: "What is a downside of not using AOP for cross-cutting concerns?"
+- description: "What is a downside of not using AOP for cross-cutting concerns?"
   answers:
     - option: "Mixing of business logic with other concerns, making it hard to maintain."
       correct: true
@@ -223,7 +223,7 @@ questions:
     - option: "Easier debugging."
       correct: false
 
-- question: "What is Aspect-Oriented Programming primarily used for?"
+- description: "What is Aspect-Oriented Programming primarily used for?"
   answers:
     - option: "Separating cross-cutting concerns from business logic."
       correct: true
@@ -234,14 +234,14 @@ questions:
     - option: "Optimizing algorithm performance."
       correct: false
 
-- question: "True or False: Without AOP, cross-cutting concerns can lead to scattered and tangled code."
+- description: "True or False: Without AOP, cross-cutting concerns can lead to scattered and tangled code."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Which aspect of software development does AOP aim to improve?"
+- description: "Which aspect of software development does AOP aim to improve?"
   answers:
     - option: "Modularity by separating concerns."
       correct: true
@@ -252,14 +252,14 @@ questions:
     - option: "Network latency."
       correct: false
 
-- question: "True or False: AOP is intended to be used in conjunction with OOP, not as a standalone approach."
+- description: "True or False: AOP is intended to be used in conjunction with OOP, not as a standalone approach."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "How does AOP handle modifications to business logic?"
+- description: "How does AOP handle modifications to business logic?"
   answers:
     - option: "By allowing behavior modification without changing the business logic itself."
       correct: true
@@ -270,7 +270,7 @@ questions:
     - option: "By encrypting business logic to secure it from external modifications."
       correct: false
 
-- question: "What defines a 'cross-cutting concern' in software development?"
+- description: "What defines a 'cross-cutting concern' in software development?"
   answers:
     - option: "A concern that impacts multiple parts of an application, like logging or security."
       correct: true
@@ -282,14 +282,14 @@ questions:
       correct: false
 
 
-- question: "True or False: Cross-cutting concerns are easily managed with traditional OOP alone."
+- description: "True or False: Cross-cutting concerns are easily managed with traditional OOP alone."
   answers:
     - option: "False"
       correct: true
     - option: "True"
       correct: false
 
-- question: "What role does 'Caching' play in Aspect-Oriented Programming?"
+- description: "What role does 'Caching' play in Aspect-Oriented Programming?"
   answers:
     - option: "It's used to store and retrieve results of method calls to improve performance."
       correct: true
@@ -300,14 +300,14 @@ questions:
     - option: "It's irrelevant and not used in AOP."
       correct: false
 
-- question: "True or False: AOP allows for altering the behavior of code without modifying the code itself."
+- description: "True or False: AOP allows for altering the behavior of code without modifying the code itself."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "In Aspect-Oriented Programming, what is an 'Aspect'?"
+- description: "In Aspect-Oriented Programming, what is an 'Aspect'?"
   answers:
     - option: "A modularization of a concern that cuts across multiple classes."
       correct: true
@@ -318,7 +318,7 @@ questions:
     - option: "A core feature of an application's business logic."
       correct: false
 
-- question: "What is one of the key benefits of using Aspect-Oriented Programming?"
+- description: "What is one of the key benefits of using Aspect-Oriented Programming?"
   answers:
     - option: "It reduces code duplication by separating cross-cutting concerns from business logic."
       correct: true
@@ -329,14 +329,14 @@ questions:
     - option: "It automatically generates database schemas."
       correct: false
 
-- question: "True or False: Logging, performance monitoring, and security are examples of concerns that can be addressed by AOP."
+- description: "True or False: Logging, performance monitoring, and security are examples of concerns that can be addressed by AOP."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Why is AOP considered complementary to OOP?"
+- description: "Why is AOP considered complementary to OOP?"
   answers:
     - option: "Because it addresses concerns that are difficult to implement efficiently with OOP alone."
       correct: true
@@ -347,7 +347,7 @@ questions:
     - option: "Because it is a newer programming paradigm that makes OOP obsolete."
       correct: false
 
-- question: "What problem does excessive use of AOP introduce?"
+- description: "What problem does excessive use of AOP introduce?"
   answers:
     - option: "Makes the code harder to understand, debug, and maintain."
       correct: true
@@ -358,13 +358,13 @@ questions:
     - option: "Leads to decreased application performance due to increased complexity."
       correct: false
 
-- question: "True or False: AOP can be used to implement caching in applications to enhance performance."
+- description: "True or False: AOP can be used to implement caching in applications to enhance performance."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
-- question: "Which of the following are benefits of using Spring Framework?"
+- description: "Which of the following are benefits of using Spring Framework?"
   answers:
     - option: "It facilitates the development of testable code."
       correct: true
@@ -377,7 +377,7 @@ questions:
     - option: "It decreases application performance due to its complexity."
       correct: false
 
-- question: "In the context of Spring Framework, what roles do beans play?"
+- description: "In the context of Spring Framework, what roles do beans play?"
   answers:
     - option: "Beans are the backbone of your application, as they constitute its central components."
       correct: true
@@ -389,7 +389,7 @@ questions:
       correct: false
     - option: "Beans can only be used in web applications developed with Spring MVC."
       correct: false
-- question: "Which of the following are types of AOP advice in Spring?"
+- description: "Which of the following are types of AOP advice in Spring?"
   answers:
     - option: "Before advice"
       correct: true
@@ -402,7 +402,7 @@ questions:
     - option: "PostConstruct advice"
       correct: false
 
-- question: "What can a join point represent in Spring AOP?"
+- description: "What can a join point represent in Spring AOP?"
   answers:
     - option: "Execution of a method"
       correct: true
@@ -414,7 +414,7 @@ questions:
       correct: false
     - option: "Initialization of a static field"
       correct: false
-- question: "Which of the following are valid pointcut designators in Spring AOP?"
+- description: "Which of the following are valid pointcut designators in Spring AOP?"
   answers:
     - option: "execution()"
       correct: true
@@ -427,7 +427,7 @@ questions:
     - option: "instanceof()"
       correct: false
 
-- question: "What aspects can be applied to using Spring AOP?"
+- description: "What aspects can be applied to using Spring AOP?"
   answers:
     - option: "Logging"
       correct: true
@@ -440,7 +440,7 @@ questions:
     - option: "Authentication"
       correct: false
 
-- question: "Which pointcut expressions are correctly matched with their description?"
+- description: "Which pointcut expressions are correctly matched with their description?"
   answers:
     - option: "'execution()' matches method execution join points"
       correct: true
@@ -453,7 +453,7 @@ questions:
     - option: "'@args()' matches if the passed argument at runtime has the given annotation"
       correct: false
 
-- question: "What information can be obtained from the JoinPoint argument in an advice?"
+- description: "What information can be obtained from the JoinPoint argument in an advice?"
   answers:
     - option: "Method signature"
       correct: true
@@ -466,7 +466,7 @@ questions:
     - option: "Exception thrown by the method"
       correct: false
 
-- question: "In which scenarios can AOP be beneficial?"
+- description: "In which scenarios can AOP be beneficial?"
   answers:
     - option: "To implement cross-cutting concerns such as logging and security"
       correct: true
@@ -479,7 +479,7 @@ questions:
     - option: "To replace traditional object-oriented programming entirely"
       correct: false
 
-- question: "What are the benefits of using Spring AOP?"
+- description: "What are the benefits of using Spring AOP?"
   answers:
     - option: "Separation of cross-cutting concerns from business logic"
       correct: true
@@ -492,7 +492,7 @@ questions:
     - option: "Dynamic alteration of object behavior at runtime without changing its bytecode"
       correct: false
 
-- question: "Which statements are true regarding Spring AOP proxies?"
+- description: "Which statements are true regarding Spring AOP proxies?"
   answers:
     - option: "A JDK dynamic proxy is used for beans that implement at least one interface"
       correct: true
@@ -505,7 +505,7 @@ questions:
     - option: "All proxies support self-invocation within target object methods"
       correct: false
 
-- question: "How can we enable AspectJ support in a Spring application?"
+- description: "How can we enable AspectJ support in a Spring application?"
   answers:
     - option: "By annotating the configuration class with @EnableAspectJAutoProxy"
       correct: true
@@ -518,42 +518,42 @@ questions:
     - option: "By manually creating proxy objects for all beans"
       correct: false
 
-- question: "The @Before advice is executed after the join point method completes."
+- description: "The @Before advice is executed after the join point method completes."
   answers:
     - option: "True"
       correct: false
     - option: "False"
       correct: true
 
-- question: "The @AfterReturning advice can modify the return value of the join point method."
+- description: "The @AfterReturning advice can modify the return value of the join point method."
   answers:
     - option: "True"
       correct: false
     - option: "False"
       correct: true
 
-- question: "Pointcut expressions can use logical operators such as &&, ||, and !."
+- description: "Pointcut expressions can use logical operators such as &&, ||, and !."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Spring AOP can be applied to private methods of a bean."
+- description: "Spring AOP can be applied to private methods of a bean."
   answers:
     - option: "True"
       correct: false
     - option: "False"
       correct: true
 
-- question: "Weaving in Spring AOP occurs at compile time."
+- description: "Weaving in Spring AOP occurs at compile time."
   answers:
     - option: "True"
       correct: false
     - option: "False"
       correct: true
 
-- question: "What is the primary purpose of the AOP module in Spring?"
+- description: "What is the primary purpose of the AOP module in Spring?"
   answers:
     - option: "To provide declarative enterprise services, especially as a replacement for EJBs."
       correct: true
@@ -564,7 +564,7 @@ questions:
     - option: "To offer a superior alternative to Java Persistence API."
       correct: false
 
-- question: "Which of the following correctly explains the concept of 'weaving' in Spring AOP?"
+- description: "Which of the following correctly explains the concept of 'weaving' in Spring AOP?"
   answers:
     - option: "It's the process of applying aspects to target objects."
       correct: true
@@ -575,7 +575,7 @@ questions:
     - option: "It is the name of a special Spring bean."
       correct: false
 
-- question: "What is the function of the @Pointcut annotation in Spring AOP?"
+- description: "What is the function of the @Pointcut annotation in Spring AOP?"
   answers:
     - option: "To declare a pointcut expression."
       correct: true
@@ -586,7 +586,7 @@ questions:
     - option: "To inject dependencies into Spring beans."
       correct: false
 
-- question: "Which advice type should you use to execute code regardless of the outcome of the join point method?"
+- description: "Which advice type should you use to execute code regardless of the outcome of the join point method?"
   answers:
     - option: "@After advice"
       correct: true
@@ -597,7 +597,7 @@ questions:
     - option: "@AfterThrowing advice"
       correct: false
 
-- question: "What is required to define an aspect in Spring AOP?"
+- description: "What is required to define an aspect in Spring AOP?"
   answers:
     - option: "A class annotated with @Aspect"
       correct: true
@@ -608,7 +608,7 @@ questions:
     - option: "A property file listing all pointcuts"
       correct: false
 
-- question: "In Spring AOP, what is 'advice'?"
+- description: "In Spring AOP, what is 'advice'?"
   answers:
     - option: "Code that is executed at a certain point during program execution."
       correct: true
@@ -619,7 +619,7 @@ questions:
     - option: "A dependency injection technique."
       correct: false
 
-- question: "Which type of AOP proxy does Spring use by default?"
+- description: "Which type of AOP proxy does Spring use by default?"
   answers:
     - option: "JDK dynamic proxy for beans with interfaces."
       correct: true
@@ -630,7 +630,7 @@ questions:
     - option: "AspectJ for weaving aspects at compile time."
       correct: false
 
-- question: "What does the 'within' pointcut designator target?"
+- description: "What does the 'within' pointcut designator target?"
   answers:
     - option: "All join points within certain types."
       correct: true
@@ -641,7 +641,7 @@ questions:
     - option: "Beans with names that match a given pattern."
       correct: false
 
-- question: "How does the @EnableAspectJAutoProxy annotation affect a Spring application?"
+- description: "How does the @EnableAspectJAutoProxy annotation affect a Spring application?"
   answers:
     - option: "It enables support for handling aspects with AspectJ annotations."
       correct: true
@@ -652,7 +652,7 @@ questions:
     - option: "It enables the application to use direct JDBC connections without a datasource."
       correct: false
 
-- question: "Which of the following is true about the 'execution' pointcut designator?"
+- description: "Which of the following is true about the 'execution' pointcut designator?"
   answers:
     - option: "It matches method execution join points."
       correct: true
@@ -663,7 +663,7 @@ questions:
     - option: "It is used to inject dependencies into aspects."
       correct: false
 
-- question: "Is it possible to apply multiple advices to the same join point?"
+- description: "Is it possible to apply multiple advices to the same join point?"
   answers:
     - option: "Yes, and the order can be controlled using the @Order annotation or implementing the Ordered interface."
       correct: true
@@ -674,7 +674,7 @@ questions:
     - option: "No, this would result in a conflict and cause an exception at runtime."
       correct: false
 
-- question: "What is the role of the @AfterThrowing advice in Spring AOP?"
+- description: "What is the role of the @AfterThrowing advice in Spring AOP?"
   answers:
     - option: "It executes advice code if a method throws an exception."
       correct: true
@@ -685,7 +685,7 @@ questions:
     - option: "It retries the method execution if an exception is thrown."
       correct: false
 
-- question: "Can Spring AOP be used to advise static methods?"
+- description: "Can Spring AOP be used to advise static methods?"
   answers:
     - option: "No, Spring AOP cannot advise static methods."
       correct: true
@@ -696,7 +696,7 @@ questions:
     - option: "No, because static methods belong to the class, not to the Spring context."
       correct: false
 
-- question: "What mechanism does Spring AOP use to create a proxy for a bean?"
+- description: "What mechanism does Spring AOP use to create a proxy for a bean?"
   answers:
     - option: "Runtime weaving"
       correct: true
@@ -707,7 +707,7 @@ questions:
     - option: "Manual weaving by the developer"
       correct: false
 
-- question: "What is the significance of the @Aspect annotation in Spring AOP?"
+- description: "What is the significance of the @Aspect annotation in Spring AOP?"
   answers:
     - option: "It marks a class as an aspect for modular cross-cutting concerns."
       correct: true
@@ -718,7 +718,7 @@ questions:
     - option: "It designates a method as a pointcut within the application."
       correct: false
 
-- question: "How do @Before and @After advices differ in their execution in relation to the join point?"
+- description: "How do @Before and @After advices differ in their execution in relation to the join point?"
   answers:
     - option: "@Before advice runs before the join point, while @After advice runs after the join point regardless of its outcome."
       correct: true
@@ -729,7 +729,7 @@ questions:
     - option: "@Before advice runs after the join point, while @After advice runs before the join point."
       correct: false
 
-- question: "Which advice type is executed around a join point, allowing for pre- and post-invocation behavior modification?"
+- description: "Which advice type is executed around a join point, allowing for pre- and post-invocation behavior modification?"
   answers:
     - option: "Around advice"
       correct: true
@@ -740,7 +740,7 @@ questions:
     - option: "AfterReturning advice"
       correct: false
 
-- question: "Can AOP advice alter the execution flow of a join point?"
+- description: "Can AOP advice alter the execution flow of a join point?"
   answers:
     - option: "Yes, particularly with Around advice, by not proceeding with the join point or by modifying the arguments."
       correct: true
@@ -751,7 +751,7 @@ questions:
     - option: "No, AOP advice is strictly for logging purposes and cannot alter execution."
       correct: false
 
-- question: "What is required for an @Aspect class to be recognized and managed by Spring?"
+- description: "What is required for an @Aspect class to be recognized and managed by Spring?"
   answers:
     - option: "The class must be annotated with @Aspect and component-scanned or manually declared as a bean."
       correct: true
@@ -762,7 +762,7 @@ questions:
     - option: "The class must be declared in a special XML configuration file."
       correct: false
 
-- question: "What is the purpose of the 'pointcut' in Spring AOP?"
+- description: "What is the purpose of the 'pointcut' in Spring AOP?"
   answers:
     - option: "To define the join points of interest where aspects should be applied."
       correct: true
@@ -773,7 +773,7 @@ questions:
     - option: "To configure transaction management across multiple services."
       correct: false
 
-- question: "Does Spring AOP support full AspectJ annotation syntax within pointcut expressions?"
+- description: "Does Spring AOP support full AspectJ annotation syntax within pointcut expressions?"
   answers:
     - option: "Yes, Spring AOP supports the use of AspectJ annotation syntax in pointcut expressions."
       correct: true
@@ -784,7 +784,7 @@ questions:
     - option: "No, Spring AOP and AspectJ are completely incompatible."
       correct: false
 
-- question: "Is it possible to advise private methods using Spring AOP?"
+- description: "Is it possible to advise private methods using Spring AOP?"
   answers:
     - option: "No, Spring AOP does not support advising private methods due to proxy-based nature."
       correct: true
@@ -795,7 +795,7 @@ questions:
     - option: "No, because advising private methods violates encapsulation principles."
       correct: false
 
-- question: "Which of the following correctly describes the 'weaving' process in Spring AOP?"
+- description: "Which of the following correctly describes the 'weaving' process in Spring AOP?"
   answers:
     - option: "Weaving is the process of linking aspects with other application types or objects to create an advised object."
       correct: true
@@ -806,7 +806,7 @@ questions:
     - option: "Weaving is the compilation step where Spring beans are instantiated."
       correct: false
 
-- question: "What does the @EnableAspectJAutoProxy annotation enable?"
+- description: "What does the @EnableAspectJAutoProxy annotation enable?"
   answers:
     - option: "It enables the support for handling aspects defined with AspectJ annotations."
       correct: true
@@ -816,7 +816,7 @@ questions:
       correct: false
     - option: "It automatically generates JDBC queries for repository classes."
       correct: false
-- question: "What is the primary purpose of AOP (Aspect-Oriented Programming) in Spring?"
+- description: "What is the primary purpose of AOP (Aspect-Oriented Programming) in Spring?"
   answers:
     - option: "To separate cross-cutting concerns from business logic"
       correct: true
@@ -827,7 +827,7 @@ questions:
     - option: "To provide annotations for data validation"
       correct: false
 
-- question: "Which Spring AOP concept is responsible for determining when advice should be executed?"
+- description: "Which Spring AOP concept is responsible for determining when advice should be executed?"
   answers:
     - option: "Pointcut"
       correct: true
@@ -838,7 +838,7 @@ questions:
     - option: "Weaving"
       correct: false
 
-- question: "In Spring AOP, what is the role of 'Advice'?"
+- description: "In Spring AOP, what is the role of 'Advice'?"
   answers:
     - option: "It defines the code to be executed at a certain join point"
       correct: true
@@ -849,7 +849,7 @@ questions:
     - option: "It defines the data model for persistence"
       correct: false
 
-- question: "What does the '@Around' advice do in Spring AOP?"
+- description: "What does the '@Around' advice do in Spring AOP?"
   answers:
     - option: "It allows executing custom code before and after the method invocation"
       correct: true
@@ -860,7 +860,7 @@ questions:
     - option: "It manages transactions"
       correct: false
 
-- question: "How does Spring AOP implement cross-cutting concerns?"
+- description: "How does Spring AOP implement cross-cutting concerns?"
   answers:
     - option: "Through runtime weaving using proxies"
       correct: true
@@ -871,7 +871,7 @@ questions:
     - option: "Through static code analysis"
       correct: false
 
-- question: "Which two types of AOP proxies does Spring support?"
+- description: "Which two types of AOP proxies does Spring support?"
   answers:
     - option: "JDK dynamic proxies and CGLIB proxies"
       correct: true
@@ -882,7 +882,7 @@ questions:
     - option: "Singleton and Prototype proxies"
       correct: false
 
-- question: "What limitation do both JDK dynamic proxies and CGLIB proxies share in Spring AOP?"
+- description: "What limitation do both JDK dynamic proxies and CGLIB proxies share in Spring AOP?"
   answers:
     - option: "They do not support self-invocation"
       correct: true
@@ -893,7 +893,7 @@ questions:
     - option: "They require classes to implement interfaces"
       correct: false
 
-- question: "What does the '@EnableAspectJAutoProxy' annotation do?"
+- description: "What does the '@EnableAspectJAutoProxy' annotation do?"
   answers:
     - option: "It enables support for handling components marked with @Aspect"
       correct: true
@@ -904,7 +904,7 @@ questions:
     - option: "It creates dynamic web proxies for controller classes"
       correct: false
 
-- question: "In Spring AOP, what is a 'Join Point'?"
+- description: "In Spring AOP, what is a 'Join Point'?"
   answers:
     - option: "A point during the execution of a program, such as method execution"
       correct: true
@@ -915,7 +915,7 @@ questions:
     - option: "A point where two aspects intersect"
       correct: false
 
-- question: "Which of the following is a true statement about 'Pointcut' expressions in Spring AOP?"
+- description: "Which of the following is a true statement about 'Pointcut' expressions in Spring AOP?"
   answers:
     - option: "They define which methods in the application are intercepted by advices"
       correct: true
@@ -926,7 +926,7 @@ questions:
     - option: "They are annotations used to mark transactional methods"
       correct: false
 
-- question: "What is the purpose of the 'ProceedingJoinPoint' in Spring AOP?"
+- description: "What is the purpose of the 'ProceedingJoinPoint' in Spring AOP?"
   answers:
     - option: "It allows method execution to be proceeded with or without modifications"
       correct: true
@@ -937,28 +937,28 @@ questions:
     - option: "It marks the starting point of a transaction in the application"
       correct: false
 
-- question: "True or False: The 'Before' advice in Spring AOP is executed before the join point method execution."
+- description: "True or False: The 'Before' advice in Spring AOP is executed before the join point method execution."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "True or False: In Spring AOP, 'AfterReturning' advice is executed only if a method completes successfully."
+- description: "True or False: In Spring AOP, 'AfterReturning' advice is executed only if a method completes successfully."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "True or False: 'AfterThrowing' advice in Spring AOP is used to handle exceptions thrown by advised methods."
+- description: "True or False: 'AfterThrowing' advice in Spring AOP is used to handle exceptions thrown by advised methods."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "How many types of advice does Spring support?"
+- description: "How many types of advice does Spring support?"
   answers:
     - option: "5"
       correct: true
@@ -969,7 +969,7 @@ questions:
     - option: "4"
       correct: false
 
-- question: "Which advice types are suitable for exception handling in Spring AOP?"
+- description: "Which advice types are suitable for exception handling in Spring AOP?"
   answers:
     - option: "AfterThrowing and Around"
       correct: true
@@ -980,7 +980,7 @@ questions:
     - option: "After and BeforeReturning"
       correct: false
 
-- question: "What annotation is required to enable AspectJ auto-proxying in Spring?"
+- description: "What annotation is required to enable AspectJ auto-proxying in Spring?"
   answers:
     - option: "@EnableAspectJAutoProxy"
       correct: true
@@ -991,7 +991,7 @@ questions:
     - option: "@ComponentScan"
       correct: false
 
-- question: "What does 'weaving' refer to in the context of Spring AOP?"
+- description: "What does 'weaving' refer to in the context of Spring AOP?"
   answers:
     - option: "The process of linking aspects with other application types or objects to create an advised object"
       correct: true
@@ -1002,7 +1002,7 @@ questions:
     - option: "The process of mapping application URLs to controller methods"
       correct: false
 
-- question: "Which statement is true about the 'execution' pointcut designator in Spring AOP?"
+- description: "Which statement is true about the 'execution' pointcut designator in Spring AOP?"
   answers:
     - option: "It matches join points based on method signatures"
       correct: true
@@ -1013,7 +1013,7 @@ questions:
     - option: "It matches methods after they have been executed, regardless of outcome"
       correct: false
 
-- question: "In Spring AOP, which proxy mechanism is used when a target object does not implement any interfaces?"
+- description: "In Spring AOP, which proxy mechanism is used when a target object does not implement any interfaces?"
   answers:
     - option: "CGLIB proxy"
       correct: true
@@ -1024,14 +1024,14 @@ questions:
     - option: "SOAP web service proxy"
       correct: false
 
-- question: "True or False: Pointcut expressions in Spring AOP can be combined using logical operators such as '&&', '||', and '!' for complex matching."
+- description: "True or False: Pointcut expressions in Spring AOP can be combined using logical operators such as '&&', '||', and '!' for complex matching."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Which advice in Spring AOP can be used to execute code both before and after a method execution, providing the most control over the method invocation?"
+- description: "Which advice in Spring AOP can be used to execute code both before and after a method execution, providing the most control over the method invocation?"
   answers:
     - option: "Around advice"
       correct: true
@@ -1042,7 +1042,7 @@ questions:
     - option: "AfterReturning advice"
       correct: false
 
-- question: "What is required for Spring AOP to manage aspects and advices within a Spring application?"
+- description: "What is required for Spring AOP to manage aspects and advices within a Spring application?"
   answers:
     - option: "@EnableAspectJAutoProxy annotation in the configuration"
       correct: true
@@ -1053,7 +1053,7 @@ questions:
     - option: "Defining a special AspectManager bean"
       correct: false
 
-- question: "Which proxy mechanism cannot be used for classes that are declared 'final' in Spring AOP?"
+- description: "Which proxy mechanism cannot be used for classes that are declared 'final' in Spring AOP?"
   answers:
     - option: "CGLIB Proxy"
       correct: true
@@ -1064,7 +1064,7 @@ questions:
     - option: "HTTP Proxy"
       correct: false
 
-- question: "What must be the visibility of methods in a Spring bean to be proxied using JDK dynamic proxies?"
+- description: "What must be the visibility of methods in a Spring bean to be proxied using JDK dynamic proxies?"
   answers:
     - option: "Public"
       correct: true
@@ -1075,21 +1075,21 @@ questions:
     - option: "No specific visibility required"
       correct: false
 
-- question: "True or False: Spring CGLIB proxies can intercept calls to private methods."
+- description: "True or False: Spring CGLIB proxies can intercept calls to private methods."
   answers:
     - option: "False"
       correct: true
     - option: "True"
       correct: false
 
-- question: "True or False: Methods that are static can be advised using Spring AOP."
+- description: "True or False: Methods that are static can be advised using Spring AOP."
   answers:
     - option: "False"
       correct: true
     - option: "True"
       correct: false
 
-- question: "In Spring AOP, which types of methods can CGLIB proxies not intercept?"
+- description: "In Spring AOP, which types of methods can CGLIB proxies not intercept?"
   answers:
     - option: "Final methods"
       correct: true
@@ -1102,7 +1102,7 @@ questions:
     - option: "Static methods"
       correct: false
 
-- question: "What visibility must methods have to be proxied by CGLIB in Spring AOP?"
+- description: "What visibility must methods have to be proxied by CGLIB in Spring AOP?"
   answers:
     - option: "Public, protected, or package-private"
       correct: true
@@ -1115,21 +1115,21 @@ questions:
     - option: "No specific visibility required"
       correct: false
 
-- question: "True or False: JDK Dynamic Proxies in Spring AOP can proxy classes that do not implement any interfaces."
+- description: "True or False: JDK Dynamic Proxies in Spring AOP can proxy classes that do not implement any interfaces."
   answers:
     - option: "False"
       correct: true
     - option: "True"
       correct: false
 
-- question: "True or False: Spring AOP supports advising final classes using JDK Dynamic Proxies."
+- description: "True or False: Spring AOP supports advising final classes using JDK Dynamic Proxies."
   answers:
     - option: "False"
       correct: true
     - option: "True"
       correct: false
 
-- question: "Why are self-invocations not intercepted by Spring AOP proxies?"
+- description: "Why are self-invocations not intercepted by Spring AOP proxies?"
   answers:
     - option: "Because the proxy is bypassed when the call is made from within the target object itself."
       correct: true
@@ -1140,7 +1140,7 @@ questions:
     - option: "Due to Java language limitations."
       correct: false
 
-- question: "What type of proxy does Spring AOP use by default when a bean implements an interface?"
+- description: "What type of proxy does Spring AOP use by default when a bean implements an interface?"
   answers:
     - option: "JDK Dynamic Proxy"
       correct: true
@@ -1151,14 +1151,14 @@ questions:
     - option: "Direct bean instance"
       correct: false
 
-- question: "True or False: To ensure CGLIB proxies are used for beans implementing interfaces, the '@EnableAspectJAutoProxy(proxyTargetClass = true)' annotation must be applied."
+- description: "True or False: To ensure CGLIB proxies are used for beans implementing interfaces, the '@EnableAspectJAutoProxy(proxyTargetClass = true)' annotation must be applied."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Which of the following is a limitation of using JDK dynamic proxies in Spring AOP?"
+- description: "Which of the following is a limitation of using JDK dynamic proxies in Spring AOP?"
   answers:
     - option: "They can only proxy interfaces, not classes."
       correct: true
@@ -1169,14 +1169,14 @@ questions:
     - option: "They require the proxied classes to be declared final."
       correct: false
 
-- question: "True or False: In Spring AOP, accessing a proxied method from within the same class will result in the advice being applied."
+- description: "True or False: In Spring AOP, accessing a proxied method from within the same class will result in the advice being applied."
   answers:
     - option: "False"
       correct: true
     - option: "True"
       correct: false
 
-- question: "What annotation enables the detection and configuration of AspectJ aspects within Spring?"
+- description: "What annotation enables the detection and configuration of AspectJ aspects within Spring?"
   answers:
     - option: "@EnableAspectJAutoProxy"
       correct: true
@@ -1187,7 +1187,7 @@ questions:
     - option: "@ComponentScan"
       correct: false
 
-- question: "Which proxy type allows for method interception in classes without interfaces?"
+- description: "Which proxy type allows for method interception in classes without interfaces?"
   answers:
     - option: "CGLIB Proxy"
       correct: true
@@ -1198,7 +1198,7 @@ questions:
     - option: "RMI Proxy"
       correct: false
 
-- question: "Which types of AOP proxies does Spring support?"
+- description: "Which types of AOP proxies does Spring support?"
   answers:
     - option: "JDK dynamic proxies and CGLIB proxies"
       correct: true
@@ -1211,7 +1211,7 @@ questions:
     - option: "SOAP web service proxy"
       correct: false
 
-- question: "What is required for a Spring bean method to be proxied using CGLIB?"
+- description: "What is required for a Spring bean method to be proxied using CGLIB?"
   answers:
     - option: "The bean class should not be final"
       correct: true
@@ -1224,21 +1224,21 @@ questions:
     - option: "The class must implement an interface"
       correct: false
 
-- question: "True or False: Spring AOP can advise private methods."
+- description: "True or False: Spring AOP can advise private methods."
   answers:
     - option: "False"
       correct: true
     - option: "True"
       correct: false
 
-- question: "True or False: Static methods can be advised by Spring AOP."
+- description: "True or False: Static methods can be advised by Spring AOP."
   answers:
     - option: "False"
       correct: true
     - option: "True"
       correct: false
 
-- question: "How many types of advice does Spring AOP support?"
+- description: "How many types of advice does Spring AOP support?"
   answers:
     - option: "5"
       correct: true
@@ -1251,7 +1251,7 @@ questions:
     - option: "2"
       correct: false
 
-- question: "What is the purpose of the Before advice in Spring AOP?"
+- description: "What is the purpose of the Before advice in Spring AOP?"
   answers:
     - option: "It is executed before the join point method execution."
       correct: true
@@ -1264,14 +1264,14 @@ questions:
     - option: "It is used to modify the return value of the join point method."
       correct: false
 
-- question: "True or False: The AfterReturning advice in Spring AOP is executed even if a join point method throws an exception."
+- description: "True or False: The AfterReturning advice in Spring AOP is executed even if a join point method throws an exception."
   answers:
     - option: "False"
       correct: true
     - option: "True"
       correct: false
 
-- question: "Which advice allows for surrounding a join point method execution in Spring AOP?"
+- description: "Which advice allows for surrounding a join point method execution in Spring AOP?"
   answers:
     - option: "Around advice"
       correct: true
@@ -1284,14 +1284,14 @@ questions:
     - option: "AfterThrowing advice"
       correct: false
 
-- question: "True or False: AfterThrowing advice in Spring AOP is used to handle exceptions thrown by advised methods."
+- description: "True or False: AfterThrowing advice in Spring AOP is used to handle exceptions thrown by advised methods."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "What does the After advice do in Spring AOP?"
+- description: "What does the After advice do in Spring AOP?"
   answers:
     - option: "It is executed after the join point method execution, regardless of the method's outcome."
       correct: true
@@ -1304,7 +1304,7 @@ questions:
     - option: "It dynamically changes the implementation of the join point method."
       correct: false
 
-- question: "For capturing and using the return value of a join point method in Spring AOP, which advice type should be used?"
+- description: "For capturing and using the return value of a join point method in Spring AOP, which advice type should be used?"
   answers:
     - option: "AfterReturning"
       correct: true
@@ -1317,14 +1317,14 @@ questions:
     - option: "AfterThrowing"
       correct: false
 
-- question: "True or False: Around advice in Spring AOP can modify the arguments passed to the join point method."
+- description: "True or False: Around advice in Spring AOP can modify the arguments passed to the join point method."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Which Spring AOP advice is executed regardless of whether the join point method completes successfully or throws an exception?"
+- description: "Which Spring AOP advice is executed regardless of whether the join point method completes successfully or throws an exception?"
   answers:
     - option: "After advice"
       correct: true
@@ -1337,7 +1337,7 @@ questions:
     - option: "Around advice"
       correct: false
 
-- question: "In Spring AOP, what is required to access the exception thrown by a join point method using AfterThrowing advice?"
+- description: "In Spring AOP, what is required to access the exception thrown by a join point method using AfterThrowing advice?"
   answers:
     - option: "Defining a 'throwing' parameter in the advice method"
       correct: true
@@ -1350,7 +1350,7 @@ questions:
     - option: "The use of @AfterThrowing annotation without any additional parameters"
       correct: false
 
-- question: "Which two advices can you use if you want to execute code before and after the successful execution of a join point method, but not when an exception is thrown?"
+- description: "Which two advices can you use if you want to execute code before and after the successful execution of a join point method, but not when an exception is thrown?"
   answers:
     - option: "Before and AfterReturning"
       correct: true
@@ -1363,14 +1363,14 @@ questions:
     - option: "AfterReturning and AfterThrowing"
       correct: false
 
-- question: "True or False: The ProceedingJoinPoint is only used with the Around advice in Spring AOP."
+- description: "True or False: The ProceedingJoinPoint is only used with the Around advice in Spring AOP."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "What is the primary use of Before advice in Spring AOP?"
+- description: "What is the primary use of Before advice in Spring AOP?"
   answers:
     - option: "Logging before a method execution"
       correct: true
@@ -1381,7 +1381,7 @@ questions:
     - option: "Caching method return values"
       correct: false
 
-- question: "What enables the execution of additional behavior after a method throws an exception in Spring AOP?"
+- description: "What enables the execution of additional behavior after a method throws an exception in Spring AOP?"
   answers:
     - option: "AfterThrowing advice"
       correct: true
@@ -1392,14 +1392,14 @@ questions:
     - option: "Before advice"
       correct: false
 
-- question: "True or False: After advice is used for executing code after a method execution, regardless of its outcome, including throwing exceptions."
+- description: "True or False: After advice is used for executing code after a method execution, regardless of its outcome, including throwing exceptions."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Which advice type would you use to implement retry logic on a method that may throw an exception?"
+- description: "Which advice type would you use to implement retry logic on a method that may throw an exception?"
   answers:
     - option: "Around advice"
       correct: true
@@ -1410,7 +1410,7 @@ questions:
     - option: "After advice"
       correct: false
 
-- question: "What aspect of a method's execution can the Around advice in Spring AOP not influence?"
+- description: "What aspect of a method's execution can the Around advice in Spring AOP not influence?"
   answers:
     - option: "The execution of the method itself"
       correct: false
@@ -1421,7 +1421,7 @@ questions:
     - option: "None, it can influence all aspects of a method's execution."
       correct: true
 
-- question: "In Spring AOP, which advice type specifically targets the scenario where a join point method execution does not throw any exceptions?"
+- description: "In Spring AOP, which advice type specifically targets the scenario where a join point method execution does not throw any exceptions?"
   answers:
     - option: "AfterReturning advice"
       correct: true
@@ -1432,7 +1432,7 @@ questions:
     - option: "After advice"
       correct: false
 
-- question: "What mechanism does the AfterReturning advice use to access the return value of the join point method in Spring AOP?"
+- description: "What mechanism does the AfterReturning advice use to access the return value of the join point method in Spring AOP?"
   answers:
     - option: "Specifying a 'returning' parameter in the advice method signature"
       correct: true
@@ -1443,14 +1443,14 @@ questions:
     - option: "Invoking a special return handling method provided by Spring AOP"
       correct: false
 
-- question: "True or False: You can change the return value of a join point method using Before advice in Spring AOP."
+- description: "True or False: You can change the return value of a join point method using Before advice in Spring AOP."
   answers:
     - option: "False"
       correct: true
     - option: "True"
       correct: false
 
-- question: "Which of the following is NOT a valid advice type in Spring AOP?"
+- description: "Which of the following is NOT a valid advice type in Spring AOP?"
   answers:
     - option: "AfterFinally advice"
       correct: true
@@ -1461,14 +1461,14 @@ questions:
     - option: "Around advice"
       correct: false
 
-- question: "True or False: Around advice in Spring AOP can be used to completely prevent the execution of the join point method."
+- description: "True or False: Around advice in Spring AOP can be used to completely prevent the execution of the join point method."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Which advice execution order is correct when multiple advices are applied to a single join point in Spring AOP?"
+- description: "Which advice execution order is correct when multiple advices are applied to a single join point in Spring AOP?"
   answers:
     - option: "1. Before advice, 2. Around advice (before proceeding), 3. Actual method execution, 4. Around advice (after proceeding), 5. AfterReturning/AfterThrowing, 6. After advice"
       correct: true
@@ -1479,7 +1479,7 @@ questions:
     - option: "1. After advice, 2. Before advice, 3. Actual method execution, 4. Around advice"
       correct: false
 
-- question: "For a method that returns a value, which advice types allow interacting with that value? (Select two)"
+- description: "For a method that returns a value, which advice types allow interacting with that value? (Select two)"
   answers:
     - option: "AfterReturning"
       correct: true
@@ -1492,14 +1492,14 @@ questions:
     - option: "AfterThrowing"
       correct: false
 
-- question: "True or False: The ProceedingJoinPoint can only be used within the context of an Around advice to invoke the next interceptor in the advice chain."
+- description: "True or False: The ProceedingJoinPoint can only be used within the context of an Around advice to invoke the next interceptor in the advice chain."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Which advice should you use to execute code after a method execution, only if the method exits by throwing an exception?"
+- description: "Which advice should you use to execute code after a method execution, only if the method exits by throwing an exception?"
   answers:
     - option: "AfterThrowing advice"
       correct: true
@@ -1510,14 +1510,14 @@ questions:
     - option: "Before advice"
       correct: false
 
-- question: "True or False: After advice is similar to finally block in try-catch statement in Java."
+- description: "True or False: After advice is similar to finally block in try-catch statement in Java."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "What annotation is commonly used to define a pointcut in Spring AOP?"
+- description: "What annotation is commonly used to define a pointcut in Spring AOP?"
   answers:
     - option: "@Pointcut"
       correct: true
@@ -1528,7 +1528,7 @@ questions:
     - option: "@JoinPoint"
       correct: false
 
-- question: "In Spring AOP, which advice allows custom behavior both before and after the advised method's execution, and also to skip the advised method's execution entirely?"
+- description: "In Spring AOP, which advice allows custom behavior both before and after the advised method's execution, and also to skip the advised method's execution entirely?"
   answers:
     - option: "Around advice"
       correct: true
@@ -1539,7 +1539,7 @@ questions:
     - option: "AfterThrowing advice"
       correct: false
 
-- question: "What is required to enable AspectJ support in Spring?"
+- description: "What is required to enable AspectJ support in Spring?"
   answers:
     - option: "@EnableAspectJAutoProxy annotation"
       correct: true
@@ -1552,14 +1552,14 @@ questions:
     - option: "@Aspect annotation"
       correct: false
 
-- question: "True or False: @EnableAspectJAutoProxy automatically detects beans annotated with @Aspect and applies them as aspects."
+- description: "True or False: @EnableAspectJAutoProxy automatically detects beans annotated with @Aspect and applies them as aspects."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "To use AspectJ annotations for defining aspects in Spring, which of the following is necessary in your configuration class?"
+- description: "To use AspectJ annotations for defining aspects in Spring, which of the following is necessary in your configuration class?"
   answers:
     - option: "@EnableAspectJAutoProxy"
       correct: true
@@ -1570,7 +1570,7 @@ questions:
     - option: "@ComponentScan"
       correct: false
 
-- question: "What does the @EnableAspectJAutoProxy(proxyTargetClass = true) annotation do?"
+- description: "What does the @EnableAspectJAutoProxy(proxyTargetClass = true) annotation do?"
   answers:
     - option: "Forces the use of CGLIB proxies instead of JDK dynamic proxies"
       correct: true
@@ -1581,14 +1581,14 @@ questions:
     - option: "Forces Spring to only use JDK dynamic proxies"
       correct: false
 
-- question: "True or False: The presence of @EnableAspectJAutoProxy in a configuration class is sufficient to enable support for handling components marked with @Aspect."
+- description: "True or False: The presence of @EnableAspectJAutoProxy in a configuration class is sufficient to enable support for handling components marked with @Aspect."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "What is the impact of setting proxyTargetClass=true in @EnableAspectJAutoProxy?"
+- description: "What is the impact of setting proxyTargetClass=true in @EnableAspectJAutoProxy?"
   answers:
     - option: "It instructs Spring to create CGLIB proxies for classes that implement interfaces."
       correct: true
@@ -1599,7 +1599,7 @@ questions:
     - option: "It forces the use of JDK dynamic proxies regardless of class type."
       correct: false
 
-- question: "In what scenario is @EnableAspectJAutoProxy(proxyTargetClass = true) particularly useful?"
+- description: "In what scenario is @EnableAspectJAutoProxy(proxyTargetClass = true) particularly useful?"
   answers:
     - option: "When you need to advise beans that do not implement any interfaces"
       correct: true
@@ -1610,14 +1610,14 @@ questions:
     - option: "When you need to disable AOP proxies"
       correct: false
 
-- question: "True or False: Applying @EnableAspectJAutoProxy in your Spring configuration requires additional dependencies to work with AspectJ aspects."
+- description: "True or False: Applying @EnableAspectJAutoProxy in your Spring configuration requires additional dependencies to work with AspectJ aspects."
   answers:
     - option: "False"
       correct: true
     - option: "True"
       correct: false
 
-- question: "Which annotation is necessary on a Spring configuration class to activate AspectJ aspects?"
+- description: "Which annotation is necessary on a Spring configuration class to activate AspectJ aspects?"
   answers:
     - option: "@EnableAspectJAutoProxy"
       correct: true
@@ -1628,7 +1628,7 @@ questions:
     - option: "@ConfigureAspectJ"
       correct: false
 
-- question: "Which of the following is not a function of the @EnableAspectJAutoProxy annotation?"
+- description: "Which of the following is not a function of the @EnableAspectJAutoProxy annotation?"
   answers:
     - option: "Enabling transaction management"
       correct: true
@@ -1639,7 +1639,7 @@ questions:
     - option: "Supporting the use of CGLIB or JDK dynamic proxies"
       correct: false
 
-- question: "What is a direct consequence of not using @EnableAspectJAutoProxy in a Spring application that utilizes aspects?"
+- description: "What is a direct consequence of not using @EnableAspectJAutoProxy in a Spring application that utilizes aspects?"
   answers:
     - option: "Aspects defined with @Aspect will not be processed or applied."
       correct: true
@@ -1650,14 +1650,14 @@ questions:
     - option: "The application will not support transaction management."
       correct: false
 
-- question: "True or False: The @EnableAspectJAutoProxy annotation must be placed on a class annotated with @Configuration for it to take effect."
+- description: "True or False: The @EnableAspectJAutoProxy annotation must be placed on a class annotated with @Configuration for it to take effect."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "How does @EnableAspectJAutoProxy change the default proxying mechanism used by Spring?"
+- description: "How does @EnableAspectJAutoProxy change the default proxying mechanism used by Spring?"
   answers:
     - option: "It allows developers to choose between CGLIB and JDK dynamic proxies through the proxyTargetClass attribute."
       correct: true
@@ -1668,7 +1668,7 @@ questions:
     - option: "It disables proxying entirely, relying on direct aspect weaving instead."
       correct: false
 
-- question: "What must be included in a Spring application to ensure @Aspect annotations are detected and applied?"
+- description: "What must be included in a Spring application to ensure @Aspect annotations are detected and applied?"
   answers:
     - option: "@EnableAspectJAutoProxy annotation in a @Configuration class"
       correct: true
@@ -1679,14 +1679,14 @@ questions:
     - option: "A custom BeanPostProcessor implementation"
       correct: false
 
-- question: "True or False: Setting proxyTargetClass=true when using @EnableAspectJAutoProxy is mandatory for advising beans that have no interfaces."
+- description: "True or False: Setting proxyTargetClass=true when using @EnableAspectJAutoProxy is mandatory for advising beans that have no interfaces."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Which pointcut expression is used to match method execution at any return type within a specific package?"
+- description: "Which pointcut expression is used to match method execution at any return type within a specific package?"
   answers:
     - option: "execution(* com.example.package..*.*(..))"
       correct: true
@@ -1699,14 +1699,14 @@ questions:
     - option: "@within(com.example.package.MyAnnotation)"
       correct: false
 
-- question: "True or False: The pointcut expression 'within(com.example.service.*)' matches all beans in the 'com.example.service' package."
+- description: "True or False: The pointcut expression 'within(com.example.service.*)' matches all beans in the 'com.example.service' package."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "What does the pointcut expression 'args(java.lang.String)' indicate?"
+- description: "What does the pointcut expression 'args(java.lang.String)' indicate?"
   answers:
     - option: "Matches if the method takes a single String argument"
       correct: true
@@ -1717,7 +1717,7 @@ questions:
     - option: "Matches methods annotated with @String"
       correct: false
 
-- question: "Which pointcut expression targets methods annotated with a specific annotation?"
+- description: "Which pointcut expression targets methods annotated with a specific annotation?"
   answers:
     - option: "@annotation(com.example.MyAnnotation)"
       correct: true
@@ -1728,14 +1728,14 @@ questions:
     - option: "args(@com.example.MyAnnotation)"
       correct: false
 
-- question: "True or False: '@args(com.example.Marker)' matches if the runtime type of the actual method argument is annotated with 'com.example.Marker'."
+- description: "True or False: '@args(com.example.Marker)' matches if the runtime type of the actual method argument is annotated with 'com.example.Marker'."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "How does the 'bean' pointcut designator function?"
+- description: "How does the 'bean' pointcut designator function?"
   answers:
     - option: "Matches beans by their names"
       correct: true
@@ -1746,7 +1746,7 @@ questions:
     - option: "Matches beans annotated with specific annotations"
       correct: false
 
-- question: "What is the purpose of the 'this' pointcut designator?"
+- description: "What is the purpose of the 'this' pointcut designator?"
   answers:
     - option: "Matches the proxy class type in Spring AOP"
       correct: true
@@ -1757,14 +1757,14 @@ questions:
     - option: "Matches based on the bean's name"
       correct: false
 
-- question: "True or False: The pointcut expression 'target(com.example.MyInterface)' matches any join point where the target object implements the specified interface."
+- description: "True or False: The pointcut expression 'target(com.example.MyInterface)' matches any join point where the target object implements the specified interface."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Which of the following is a correct use of the '@within' pointcut designator?"
+- description: "Which of the following is a correct use of the '@within' pointcut designator?"
   answers:
     - option: "Matches if the execution occurs within a type that holds the specified annotation"
       correct: true
@@ -1775,7 +1775,7 @@ questions:
     - option: "Matches methods that return instances of the specified type"
       correct: false
 
-- question: "What does the pointcut expression 'execution(public * set*(..))' specify?"
+- description: "What does the pointcut expression 'execution(public * set*(..))' specify?"
   answers:
     - option: "Matches all public setter methods"
       correct: true
@@ -1786,7 +1786,7 @@ questions:
     - option: "Matches setter methods within a specific package only"
       correct: false
 
-- question: "Which Spring AOP pointcut expression matches a method execution within a specific package?"
+- description: "Which Spring AOP pointcut expression matches a method execution within a specific package?"
   answers:
     - option: "execution(* com.example.package..*.*(..))"
       correct: true
@@ -1799,14 +1799,14 @@ questions:
     - option: "@within(com.example.package.MyAnnotation)"
       correct: false
 
-- question: "True or False: The 'args' pointcut designator matches methods based on the arguments they accept."
+- description: "True or False: The 'args' pointcut designator matches methods based on the arguments they accept."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Which of the following pointcut expressions correctly matches both getter and setter methods in a class?"
+- description: "Which of the following pointcut expressions correctly matches both getter and setter methods in a class?"
   answers:
     - option: "execution(* get*()) || execution(* set*(..))"
       correct: true
@@ -1819,7 +1819,7 @@ questions:
     - option: "bean(get*) || bean(set*)"
       correct: false
 
-- question: "What does the '@within' pointcut designator specify?"
+- description: "What does the '@within' pointcut designator specify?"
   answers:
     - option: "Matches if the execution occurs within a type that holds the specified annotation"
       correct: true
@@ -1830,7 +1830,7 @@ questions:
     - option: "Matches methods that return instances of the specified type"
       correct: false
 
-- question: "Which pointcut designator is used to match Spring beans by their names?"
+- description: "Which pointcut designator is used to match Spring beans by their names?"
   answers:
     - option: "bean"
       correct: true
@@ -1843,14 +1843,14 @@ questions:
     - option: "args"
       correct: false
 
-- question: "True or False: The 'this' pointcut designator refers to the proxy class type in Spring AOP."
+- description: "True or False: The 'this' pointcut designator refers to the proxy class type in Spring AOP."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "For matching join points where the subject of the annotation has the given annotation, which pointcut designator should be used?"
+- description: "For matching join points where the subject of the annotation has the given annotation, which pointcut designator should be used?"
   answers:
     - option: "@annotation"
       correct: true
@@ -1863,7 +1863,7 @@ questions:
     - option: "args"
       correct: false
 
-- question: "What functionality does the `ProceedingJoinPoint` provide in Spring AOP?"
+- description: "What functionality does the `ProceedingJoinPoint` provide in Spring AOP?"
   answers:
     - option: "Allows for proceeding with or modifying the execution of the advised method"
       correct: true
@@ -1874,14 +1874,14 @@ questions:
     - option: "Matches the advised method based on its annotations"
       correct: false
 
-- question: "True or False: The `ProceedingJoinPoint` is only used within the context of an `@Around` advice."
+- description: "True or False: The `ProceedingJoinPoint` is only used within the context of an `@Around` advice."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Which pointcut designator targets the execution of any public method within a class in a specific package?"
+- description: "Which pointcut designator targets the execution of any public method within a class in a specific package?"
   answers:
     - option: "execution(public * com.example.package..*.*(..))"
       correct: true
@@ -1892,14 +1892,14 @@ questions:
     - option: "@annotation(com.example.package..*)"
       correct: false
 
-- question: "True or False: A single pointcut expression can use both '&&' and '||' logical operators to combine multiple conditions."
+- description: "True or False: A single pointcut expression can use both '&&' and '||' logical operators to combine multiple conditions."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Which advice type is NOT supported by Spring AOP?"
+- description: "Which advice type is NOT supported by Spring AOP?"
   answers:
     - option: "AfterFinally advice"
       correct: true
@@ -1910,7 +1910,7 @@ questions:
     - option: "Around advice"
       correct: false
 
-- question: "How can you modify the arguments of a join point method in Spring AOP?"
+- description: "How can you modify the arguments of a join point method in Spring AOP?"
   answers:
     - option: "Using ProceedingJoinPoint.proceed() with modified arguments"
       correct: true
@@ -1921,14 +1921,14 @@ questions:
     - option: "Modifying the arguments in an After advice"
       correct: false
 
-- question: "True or False: The '@args' pointcut designator matches methods if the passed argument at runtime is an instance of a specified type."
+- description: "True or False: The '@args' pointcut designator matches methods if the passed argument at runtime is an instance of a specified type."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "What is the primary use of the '@AfterThrowing' advice in Spring AOP?"
+- description: "What is the primary use of the '@AfterThrowing' advice in Spring AOP?"
   answers:
     - option: "To execute code after a method throws an exception"
       correct: true
@@ -1939,7 +1939,7 @@ questions:
     - option: "To modify the exception thrown by the advised method"
       correct: false
 
-- question: "In Spring AOP, which pointcut designator is used to match join points where the target object is of a specific type?"
+- description: "In Spring AOP, which pointcut designator is used to match join points where the target object is of a specific type?"
   answers:
     - option: "target"
       correct: true
@@ -1950,14 +1950,14 @@ questions:
     - option: "@within"
       correct: false
 
-- question: "True or False: '@EnableAspectJAutoProxy' annotation is required to enable support for aspects defined with '@Aspect' annotations in Spring."
+- description: "True or False: '@EnableAspectJAutoProxy' annotation is required to enable support for aspects defined with '@Aspect' annotations in Spring."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Which advice should you use to ensure code execution both before and after the successful execution of a join point method?"
+- description: "Which advice should you use to ensure code execution both before and after the successful execution of a join point method?"
   answers:
     - option: "Around advice"
       correct: true
@@ -1968,14 +1968,14 @@ questions:
     - option: "After advice"
       correct: false
 
-- question: "True or False: The 'bean' pointcut designator can match beans by using wildcards in their names."
+- description: "True or False: The 'bean' pointcut designator can match beans by using wildcards in their names."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "What is required for a method to be advised by an Around advice in Spring AOP?"
+- description: "What is required for a method to be advised by an Around advice in Spring AOP?"
   answers:
     - option: "The method must be intercepted by a matching pointcut expression."
       correct: true
@@ -1986,7 +1986,7 @@ questions:
     - option: "The method must be declared within a bean annotated with @EnableAspectJAutoProxy."
       correct: false
 
-- question: "Which pointcut expression matches a method execution for any return type within a class named 'ExampleService'?"
+- description: "Which pointcut expression matches a method execution for any return type within a class named 'ExampleService'?"
   answers:
     - option: "execution(* com.example.service.ExampleService.*(..))"
       correct: true
@@ -1997,14 +1997,14 @@ questions:
     - option: "@target(com.example.service.ExampleService)"
       correct: false
 
-- question: "True or False: The '@annotation' pointcut designator matches join points where the executing method is annotated with a specified annotation."
+- description: "True or False: The '@annotation' pointcut designator matches join points where the executing method is annotated with a specified annotation."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "How does the '@EnableAspectJAutoProxy(proxyTargetClass = true)' annotation affect proxy creation in Spring AOP?"
+- description: "How does the '@EnableAspectJAutoProxy(proxyTargetClass = true)' annotation affect proxy creation in Spring AOP?"
   answers:
     - option: "Forces the use of class-based (CGLIB) proxies instead of interface-based (JDK) proxies."
       correct: true
@@ -2014,7 +2014,7 @@ questions:
       correct: false
     - option: "Enables automatic detection of all beans without specifying pointcut expressions."
       correct: false
-- question: "Which advice is executed regardless of whether the join point method exits normally or with an exception?"
+- description: "Which advice is executed regardless of whether the join point method exits normally or with an exception?"
   answers:
     - option: "After advice"
       correct: true
@@ -2027,14 +2027,14 @@ questions:
     - option: "Around advice"
       correct: false
 
-- question: "True or False: The '@args' pointcut designator matches methods where the runtime type of any argument is annotated with a specified annotation."
+- description: "True or False: The '@args' pointcut designator matches methods where the runtime type of any argument is annotated with a specified annotation."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "In Spring AOP, what is the purpose of the '@AfterReturning' advice?"
+- description: "In Spring AOP, what is the purpose of the '@AfterReturning' advice?"
   answers:
     - option: "It is executed after a join point completes normally, to add additional behavior or modify the return value."
       correct: true
@@ -2045,7 +2045,7 @@ questions:
     - option: "It is used to execute code both before and after the method execution."
       correct: false
 
-- question: "Which of the following is a correct way to use a logical operator in a pointcut expression?"
+- description: "Which of the following is a correct way to use a logical operator in a pointcut expression?"
   answers:
     - option: "@annotation(FirstAnnotation) || @annotation(SecondAnnotation)"
       correct: true
@@ -2058,14 +2058,14 @@ questions:
     - option: "bean(exampleService) || !@target(com.example.annotation.Custom)"
       correct: true
 
-- question: "True or False: The 'within' pointcut designator matches join points within classes specified by the given pattern, including all methods within those classes."
+- description: "True or False: The 'within' pointcut designator matches join points within classes specified by the given pattern, including all methods within those classes."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "What does the `ProceedingJoinPoint.proceed()` method do when used within an Around advice?"
+- description: "What does the `ProceedingJoinPoint.proceed()` method do when used within an Around advice?"
   answers:
     - option: "Continues the execution of the join point method."
       correct: true
@@ -2076,7 +2076,7 @@ questions:
     - option: "Throws an exception to halt the process."
       correct: false
 
-- question: "Which pointcut designator should be used to intercept methods that have been annotated with a specific annotation?"
+- description: "Which pointcut designator should be used to intercept methods that have been annotated with a specific annotation?"
   answers:
     - option: "@annotation"
       correct: true
@@ -2089,14 +2089,14 @@ questions:
     - option: "@within"
       correct: false
 
-- question: "True or False: To use Spring AOP's '@EnableAspectJAutoProxy' with class-based proxies, the 'proxyTargetClass' attribute must be set to true."
+- description: "True or False: To use Spring AOP's '@EnableAspectJAutoProxy' with class-based proxies, the 'proxyTargetClass' attribute must be set to true."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "What is the effect of using the 'target' pointcut designator in a Spring AOP expression?"
+- description: "What is the effect of using the 'target' pointcut designator in a Spring AOP expression?"
   answers:
     - option: "It limits the advice application to join points where the target object is of a specified type."
       correct: true
@@ -2107,7 +2107,7 @@ questions:
     - option: "It specifies the exact name of the Spring bean to be advised."
       correct: false
 
-- question: "Which advice type would you use to execute code before the join point method execution?"
+- description: "Which advice type would you use to execute code before the join point method execution?"
   answers:
     - option: "Before advice"
       correct: true
@@ -2120,14 +2120,14 @@ questions:
     - option: "AfterThrowing advice"
       correct: false
 
-- question: "True or False: An '@Around' advice in Spring AOP can modify the return value of the join point method."
+- description: "True or False: An '@Around' advice in Spring AOP can modify the return value of the join point method."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "What does the '@Within' pointcut designator target in Spring AOP?"
+- description: "What does the '@Within' pointcut designator target in Spring AOP?"
   answers:
     - option: "It matches join points within types that have the specified annotation."
       correct: true
@@ -2138,7 +2138,7 @@ questions:
     - option: "It targets all methods within specified package paths."
       correct: false
 
-- question: "In Spring AOP, which pointcut designator would you use to match the execution of any method named 'update' regardless of its arguments?"
+- description: "In Spring AOP, which pointcut designator would you use to match the execution of any method named 'update' regardless of its arguments?"
   answers:
     - option: "execution(* update(..))"
       correct: true
@@ -2149,7 +2149,7 @@ questions:
     - option: "args(update)"
       correct: false
 
-- question: "What is the significance of the 'within' pointcut designator in Spring AOP?"
+- description: "What is the significance of the 'within' pointcut designator in Spring AOP?"
   answers:
     - option: "It restricts matching to join points within certain types (e.g., within a given package or class)."
       correct: true
@@ -2160,14 +2160,14 @@ questions:
     - option: "It matches join points only if a method is annotated with a specific annotation."
       correct: false
 
-- question: "True or False: The 'args' pointcut designator in Spring AOP can match methods with a specific number of arguments of any type."
+- description: "True or False: The 'args' pointcut designator in Spring AOP can match methods with a specific number of arguments of any type."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Which of the following advice types is executed regardless of whether a method exits normally or due to an exception?"
+- description: "Which of the following advice types is executed regardless of whether a method exits normally or due to an exception?"
   answers:
     - option: "After advice"
       correct: true
@@ -2178,7 +2178,7 @@ questions:
     - option: "AfterThrowing advice"
       correct: false
 
-- question: "In Spring AOP, what does the '@args' pointcut designator target?"
+- description: "In Spring AOP, what does the '@args' pointcut designator target?"
   answers:
     - option: "Methods that take an argument annotated with a given annotation"
       correct: true
@@ -2189,14 +2189,14 @@ questions:
     - option: "Methods that return a specific type of object"
       correct: false
 
-- question: "True or False: The 'bean' pointcut designator is used to apply advice to specific Spring beans by their IDs or names."
+- description: "True or False: The 'bean' pointcut designator is used to apply advice to specific Spring beans by their IDs or names."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Which advice type allows you to execute advice before the join point method execution in Spring AOP?"
+- description: "Which advice type allows you to execute advice before the join point method execution in Spring AOP?"
   answers:
     - option: "Before advice"
       correct: true
@@ -2207,7 +2207,7 @@ questions:
     - option: "After advice"
       correct: false
 
-- question: "Which pointcut expression matches a method named 'update' in classes within a 'service' package?"
+- description: "Which pointcut expression matches a method named 'update' in classes within a 'service' package?"
   answers:
     - option: "execution(* com.example.service.*.update(..))"
       correct: true
@@ -2218,14 +2218,14 @@ questions:
     - option: "bean(*Service) && execution(* update(..))"
       correct: false
 
-- question: "True or False: The '@target' pointcut designator matches join points where the class of the executing object is annotated with a given annotation."
+- description: "True or False: The '@target' pointcut designator matches join points where the class of the executing object is annotated with a given annotation."
   answers:
     - option: "True"
       correct: false
     - option: "False"
       correct: true
 
-- question: "What does the 'args' pointcut designator specifically match in Spring AOP?"
+- description: "What does the 'args' pointcut designator specifically match in Spring AOP?"
   answers:
     - option: "Join points with methods having arguments of the specified types."
       correct: true
@@ -2236,14 +2236,14 @@ questions:
     - option: "Join points where the target object implements a specified interface."
       correct: false
 
-- question: "True or False: In Spring AOP, the 'within' pointcut designator can match methods from classes in sub-packages of the specified package."
+- description: "True or False: In Spring AOP, the 'within' pointcut designator can match methods from classes in sub-packages of the specified package."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Which of the following best describes the 'Around' advice in Spring AOP?"
+- description: "Which of the following best describes the 'Around' advice in Spring AOP?"
   answers:
     - option: "It allows for comprehensive control over the method execution, including proceeding, skipping, or modifying the execution."
       correct: true
@@ -2254,14 +2254,14 @@ questions:
     - option: "It runs before the join point, allowing for argument modification only."
       correct: false
 
-- question: "True or False: '@args' designator in Spring AOP matches if the annotated method is passed an argument at runtime of the specified annotation."
+- description: "True or False: '@args' designator in Spring AOP matches if the annotated method is passed an argument at runtime of the specified annotation."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "For an advice to modify the arguments of the join point in Spring AOP, which of the following is necessary?"
+- description: "For an advice to modify the arguments of the join point in Spring AOP, which of the following is necessary?"
   answers:
     - option: "The use of a ProceedingJoinPoint in an Around advice."
       correct: true
@@ -2272,14 +2272,14 @@ questions:
     - option: "An AfterThrowing advice catching exceptions to alter arguments."
       correct: false
 
-- question: "True or False: The execution of advice annotated with '@Before' occurs after the join point method execution."
+- description: "True or False: The execution of advice annotated with '@Before' occurs after the join point method execution."
   answers:
     - option: "False"
       correct: true
     - option: "True"
       correct: false
 
-- question: "Which pointcut designator should be used to apply advice to all methods within classes located in a specific package and its sub-packages?"
+- description: "Which pointcut designator should be used to apply advice to all methods within classes located in a specific package and its sub-packages?"
   answers:
     - option: "within(com.example.service..*)"
       correct: true
@@ -2290,14 +2290,14 @@ questions:
     - option: "target(com.example.service..*)"
       correct: false
 
-- question: "True or False: An '@AfterThrowing' advice can access the thrown exception using the 'throwing' parameter."
+- description: "True or False: An '@AfterThrowing' advice can access the thrown exception using the 'throwing' parameter."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Which advice executes regardless of the method outcome, similar to a 'finally' block?"
+- description: "Which advice executes regardless of the method outcome, similar to a 'finally' block?"
   answers:
     - option: "After advice"
       correct: true
@@ -2308,7 +2308,7 @@ questions:
     - option: "AfterThrowing advice"
       correct: false
 
-- question: "In Spring AOP, what enables the interception and modification of a method call at runtime?"
+- description: "In Spring AOP, what enables the interception and modification of a method call at runtime?"
   answers:
     - option: "ProceedingJoinPoint within an Around advice"
       correct: true
@@ -2319,14 +2319,14 @@ questions:
     - option: "Advice annotations within an AfterThrowing advice"
       correct: false
 
-- question: "True or False: The '@EnableAspectJAutoProxy' annotation activates support for handling components marked with '@Aspect'."
+- description: "True or False: The '@EnableAspectJAutoProxy' annotation activates support for handling components marked with '@Aspect'."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "What does the '@target' pointcut designator match in Spring AOP?"
+- description: "What does the '@target' pointcut designator match in Spring AOP?"
   answers:
     - option: "Join points where the target object is of a specific type"
       correct: true
@@ -2337,14 +2337,14 @@ questions:
     - option: "Execution of methods annotated with a specific annotation"
       correct: false
 
-- question: "True or False: Pointcut expressions can be combined using logical operators AND ('&&'), OR ('||'), and NOT ('!') to form complex matches."
+- description: "True or False: Pointcut expressions can be combined using logical operators AND ('&&'), OR ('||'), and NOT ('!') to form complex matches."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Which type of advice would you use to execute code both before and after a method execution, allowing you to potentially prevent the method execution?"
+- description: "Which type of advice would you use to execute code both before and after a method execution, allowing you to potentially prevent the method execution?"
   answers:
     - option: "Around advice"
       correct: true
@@ -2355,7 +2355,7 @@ questions:
     - option: "AfterReturning advice"
       correct: false
 
-- question: "In Spring AOP, what is the role of the '@AfterReturning' advice?"
+- description: "In Spring AOP, what is the role of the '@AfterReturning' advice?"
   answers:
     - option: "It allows executing code after a method returns normally."
       correct: true
@@ -2366,14 +2366,14 @@ questions:
     - option: "It is used to modify the return value of the method."
       correct: false
 
-- question: "True or False: The 'within' pointcut designator limits matching to specific types, such as all classes within a package."
+- description: "True or False: The 'within' pointcut designator limits matching to specific types, such as all classes within a package."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Which pointcut expression matches any method execution within a class annotated with '@Repository'?"
+- description: "Which pointcut expression matches any method execution within a class annotated with '@Repository'?"
   answers:
     - option: "@within(org.springframework.stereotype.Repository)"
       correct: true
@@ -2384,14 +2384,14 @@ questions:
     - option: "within(org.springframework.stereotype.Repository)"
       correct: false
 
-- question: "True or False: An '@Around' advice in Spring AOP must always call 'ProceedingJoinPoint.proceed()' to continue with the advised method's execution."
+- description: "True or False: An '@Around' advice in Spring AOP must always call 'ProceedingJoinPoint.proceed()' to continue with the advised method's execution."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "What is the function of the '@Before' advice in Spring AOP?"
+- description: "What is the function of the '@Before' advice in Spring AOP?"
   answers:
     - option: "It is executed before the advised method's execution."
       correct: true
@@ -2402,14 +2402,14 @@ questions:
     - option: "It catches exceptions thrown by the advised method."
       correct: false
 
-- question: "True or False: The '@After' advice in Spring AOP is executed after the advised method completes, regardless of the outcome."
+- description: "True or False: The '@After' advice in Spring AOP is executed after the advised method completes, regardless of the outcome."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Which pointcut designator matches the execution of any method named 'find*' within a specific package?"
+- description: "Which pointcut designator matches the execution of any method named 'find*' within a specific package?"
   answers:
     - option: "execution(* com.example.service.*.find*(..))"
       correct: true
@@ -2420,14 +2420,14 @@ questions:
     - option: "@annotation(com.example.service.find*)"
       correct: false
 
-- question: "True or False: The 'args' pointcut designator in Spring AOP is used to match methods with specific arguments, based on their types."
+- description: "True or False: The 'args' pointcut designator in Spring AOP is used to match methods with specific arguments, based on their types."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "Which advice is used in Spring AOP to handle an exception thrown by the advised method and to execute custom code?"
+- description: "Which advice is used in Spring AOP to handle an exception thrown by the advised method and to execute custom code?"
   answers:
     - option: "AfterThrowing advice"
       correct: true
@@ -2438,7 +2438,7 @@ questions:
     - option: "Before advice"
       correct: false
 
-- question: "In Spring AOP, which advice allows modifying the advised method's return value?"
+- description: "In Spring AOP, which advice allows modifying the advised method's return value?"
   answers:
     - option: "Around advice"
       correct: true
@@ -2449,14 +2449,14 @@ questions:
     - option: "After advice"
       correct: false
 
-- question: "True or False: '@EnableAspectJAutoProxy' is necessary for activating AOP proxies based on AspectJ annotations within Spring applications."
+- description: "True or False: '@EnableAspectJAutoProxy' is necessary for activating AOP proxies based on AspectJ annotations within Spring applications."
   answers:
     - option: "True"
       correct: true
     - option: "False"
       correct: false
 
-- question: "What does the '@annotation' pointcut designator target?"
+- description: "What does the '@annotation' pointcut designator target?"
   answers:
     - option: "Join points where the executing method is annotated with the specified annotation."
       correct: true

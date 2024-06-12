@@ -1,0 +1,9 @@
+questions:
+  - description: "What is the capital of Canada?"
+    answers:
+      - answer: "Toronto"
+        correctAnswer: true
+      - answer: "Ottawa"
+        correctAnswer: false
+      - answer: "Vancouver"
+        correctAnswer: false

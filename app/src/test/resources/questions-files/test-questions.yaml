@@ -1,5 +1,5 @@
 questions:
-  - question: "What is the capital of Canada?"
+  - description: "What is the capital of Canada?"
     answers:
       - option: "Toronto"
         correct: true
@@ -7,7 +7,7 @@ questions:
         correct: false
       - option: "Vancouver"
         correct: false
-  - question: "What is 2 + 2?"
+  - description: "What is 2 + 2?"
     answers:
       - option: "3"
         correct: false

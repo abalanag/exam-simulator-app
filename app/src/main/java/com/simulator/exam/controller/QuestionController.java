@@ -41,13 +41,9 @@ public class QuestionController {
     @PostMapping(value = { "/import/{fileName}/{moduleNumber}", "/import/{fileName}" })
     public HttpStatus importLocalQuestionsToDatabase(@PathVariable("fileName") final String fileName,
             @PathVariable(value = "moduleNumber", required = false) final Integer moduleNumber) {
-        try {
-            questionService.saveImportLocalQuestionByModuleNumber(fileName, moduleNumber);
-            return HttpStatus.ACCEPTED;
-        } catch (final Exception e) {
-            // Handle the exception, e.g., log the error
-            return HttpStatus.INTERNAL_SERVER_ERROR;
-        }
+
+        questionService.saveImportLocalQuestionByModuleNumber(fileName, moduleNumber);
+        return HttpStatus.CREATED;
     }
 
     /**
@@ -57,13 +53,9 @@ public class QuestionController {
      */
     @GetMapping
     public ResponseEntity<List<QuestionDo>> getAllQuestionsRandom() {
-        try {
-            final List<QuestionDo> questions = questionService.getRandomQuestions();
-            return ResponseEntity.ok(questions);
-        } catch (final Exception e) {
-            // Handle the exception, e.g., log the error
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+
+        final List<QuestionDo> questions = questionService.getRandomQuestions();
+        return ResponseEntity.ok(questions);
     }
 
     /**
@@ -76,13 +68,9 @@ public class QuestionController {
     @GetMapping("/random")
     public ResponseEntity<List<QuestionDo>> getRandomQuestionsByModuleAndNumber(@RequestParam final String module,
             @RequestParam final int numberOfQuestions) {
-        try {
-            final List<QuestionDo> questions = questionService.getRandomQuestionsByModule(module, numberOfQuestions);
-            return ResponseEntity.ok(questions);
-        } catch (final Exception e) {
-            // Handle the exception, e.g., log the error
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+
+        final List<QuestionDo> questions = questionService.getRandomQuestionsByModule(module, numberOfQuestions);
+        return ResponseEntity.ok(questions);
     }
 
     /**
@@ -94,13 +82,10 @@ public class QuestionController {
     @GetMapping("/exam-structure")
     public ResponseEntity<List<QuestionDo>> getQuestionStructure(
             @RequestBody final List<QuestionsStructureDo> questionDo) {
-        try {
-            final List<QuestionDo> questions = questionService.getQuestionsByStructure(questionDo);
-            return ResponseEntity.ok(questions);
-        } catch (final Exception e) {
-            // Handle the exception, e.g., log the error
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
+
+        final List<QuestionDo> questions = questionService.getQuestionsByStructure(questionDo);
+        return ResponseEntity.ok(questions);
+
     }
 
     /**
@@ -113,12 +98,8 @@ public class QuestionController {
     @PostMapping(value = "/import/from-file/{moduleNumber}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public HttpStatus importQuestionsToDatabaseFromFile(@RequestPart("file") final MultipartFile multipartFile,
             @PathVariable final Integer moduleNumber) {
-        try {
-            questionService.saveImportQuestionsFromFile(multipartFile, moduleNumber);
-            return HttpStatus.ACCEPTED;
-        } catch (final Exception e) {
-            // Handle the exception, e.g., log the error
-            return HttpStatus.INTERNAL_SERVER_ERROR;
-        }
+
+        questionService.saveImportQuestionsFromFile(multipartFile, moduleNumber);
+        return HttpStatus.CREATED;
     }
 }

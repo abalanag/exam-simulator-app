@@ -26,11 +26,16 @@ public class Answer {
     @SequenceGenerator(initialValue = 1000, name = "answer_sequence", sequenceName = "answer_sequence",
             allocationSize = 1)
     @Column(name = "id", nullable = false)
-    Long id;
-    String option;
-    boolean correct;
+    private Long id;
+    private String option;
+    private boolean correct;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question_id", nullable = false)
     private Question question;
+
+    public Answer(final String option, final boolean correct) {
+        this.option = option;
+        this.correct = correct;
+    }
 }

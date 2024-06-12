@@ -14,6 +14,7 @@ import org.springframework.lang.Nullable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class QuestionDo {
+
     private long id;
     private String question;
     private List<AnswerDo> answers;

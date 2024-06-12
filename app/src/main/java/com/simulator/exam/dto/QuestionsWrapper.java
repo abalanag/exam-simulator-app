@@ -15,5 +15,4 @@ import lombok.Setter;
 public class QuestionsWrapper {
 
     private List<Question> questions;
-
 }

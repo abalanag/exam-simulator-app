@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.yaml.snakeyaml.constructor.ConstructorException;
 
 @ControllerAdvice
 public class FileLoaderExceptionHandler {
@@ -43,5 +44,12 @@ public class FileLoaderExceptionHandler {
         LOGGER.log(Level.WARNING, "Exception encountered during questions deserialization", ex);
         final ErrorResponse errorResponse = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(ConstructorException.class)
+    public ResponseEntity<ErrorResponse> handleMultipartFileLoaderException(final ConstructorException ex) {
+        LOGGER.log(Level.WARNING, "The format of the question is not correct", ex);
+        final ErrorResponse errorResponse = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), ex.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 }

@@ -10,6 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class QuestionsStructureDo {
+
     private String module;
     private int questionNumber;
 }

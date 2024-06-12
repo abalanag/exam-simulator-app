@@ -31,8 +31,7 @@ public class Question {
             allocationSize = 1)
     @Column(name = "id", nullable = false)
     private Long id;
-
-    private String question;
+    private String description;
 
     @Enumerated(EnumType.STRING)
     private ModuleEnum moduleEnum;
@@ -40,8 +39,8 @@ public class Question {
     @OneToMany(mappedBy = "question", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Answer> answers;
 
-    public Question(final String question, final List<Answer> answers, final ModuleEnum moduleEnum) {
-        this.question = question;
+    public Question(final String description, final List<Answer> answers, final ModuleEnum moduleEnum) {
+        this.description = description;
         this.answers = answers;
         this.moduleEnum = moduleEnum;
     }
