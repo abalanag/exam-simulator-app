@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import com.simulator.exam.exception.DuplicateAnswerException;
 import com.simulator.exam.exception.DuplicateQuestionException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -27,5 +28,12 @@ public class QuestionExceptionHandler {
         LOGGER.log(Level.WARNING, "Exception encountered during answer persistence", ex);
         final ErrorResponse errorResponse = new ErrorResponse(HttpStatus.CONFLICT.value(), ex.getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleDuplicateQuestionException(final EntityNotFoundException ex) {
+        LOGGER.log(Level.WARNING, "Exception encountered during answer persistence", ex);
+        final ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 }

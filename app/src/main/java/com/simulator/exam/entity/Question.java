@@ -16,6 +16,7 @@ import jakarta.persistence.UniqueConstraint;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.lang.Nullable;
 
 @Entity
 @Getter
@@ -31,12 +32,13 @@ public class Question {
     private Long id;
     private String description;
 
+    @Nullable
     private String moduleName;
 
     @OneToMany(mappedBy = "question", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Answer> answers;
 
-    public Question(final String description, final List<Answer> answers, final String moduleName) {
+    public Question(final String description, final List<Answer> answers, @Nullable final String moduleName) {
         this.description = description;
         this.answers = answers;
         this.moduleName = moduleName;

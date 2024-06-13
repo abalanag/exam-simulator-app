@@ -11,4 +11,9 @@ public interface AnswerService {
     void saveAnswers(final List<Question> questionsFromYaml, final List<Question> databaseQuestions);
 
     List<AnswerDo> mapAnswersToAnswerDo(final List<Answer> answers);
+    void saveAnswersForTheGivenQuestion(Question question, List<Answer> answers);
+
+    List<Answer> updateAnswers(List<Answer> answer);
+
+    Answer updateAnswerById(Answer answer, Long id);
 }

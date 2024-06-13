@@ -15,14 +15,14 @@ import org.springframework.lang.Nullable;
 public class QuestionDo {
 
     private long id;
-    private String question;
+    private String description;
     private List<AnswerDo> answers;
 
     @Nullable
     private String moduleName;
 
-    public QuestionDo(final String question, final List<AnswerDo> answers, @Nullable final String moduleName) {
-        this.question = question;
+    public QuestionDo(final String description, final List<AnswerDo> answers, @Nullable final String moduleName) {
+        this.description = description;
         this.answers = answers;
         this.moduleName = moduleName;
     }
