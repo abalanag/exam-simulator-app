@@ -7,12 +7,13 @@ import java.util.logging.Logger;
 
 import com.simulator.exam.dto.QuestionDo;
 import com.simulator.exam.dto.QuestionsStructureDo;
-import com.simulator.exam.entity.ModuleEnum;
 import com.simulator.exam.entity.Question;
 import com.simulator.exam.exception.DuplicateQuestionException;
 import com.simulator.exam.repository.QuestionRepository;
 import com.simulator.exam.util.ExamUtils;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,6 +23,10 @@ class QuestionServiceImp implements QuestionService {
     private final QuestionRepository questionRepository;
     private final AnswerService answerService;
     private static final Logger LOGGER = Logger.getLogger("application.logger");
+
+    @Setter
+    @Value("${app.question.file.locale.path}")
+    private String filePath;
 
     @Autowired
     public QuestionServiceImp(final QuestionRepository questionRepository, final AnswerService answerService) {
@@ -40,7 +45,7 @@ class QuestionServiceImp implements QuestionService {
         }
 
         questions.forEach(this::saveUniqueQuestion);
-        LOGGER.log(Level.INFO, "{} unique questions have been successfully saved", questions.size());
+        LOGGER.log(Level.INFO, "{0} unique questions have been successfully saved", questions.size());
     }
 
     /**
@@ -72,7 +77,7 @@ class QuestionServiceImp implements QuestionService {
      */
     private QuestionDo mapQuestionToQuestionDo(final Question question) {
         return new QuestionDo(question.getDescription(), answerService.mapAnswersToAnswerDo(question.getAnswers()),
-                question.getModuleEnum());
+                question.getModuleName());
     }
 
     /**
@@ -83,9 +88,10 @@ class QuestionServiceImp implements QuestionService {
     private void saveUniqueQuestion(final Question question) {
         if (!questionRepository.findAll().stream().map(Question::getDescription).toList()
                 .contains(question.getDescription())) {
-            questionRepository.save(new Question(question.getDescription(), List.of(), question.getModuleEnum()));
+            questionRepository.save(
+                    new Question(question.getDescription(), List.of(), question.getModuleName()));
         } else {
-            LOGGER.log(Level.WARNING, "Question {} is already persisted", question.getDescription());
+            LOGGER.log(Level.WARNING, "Question {0} is already persisted", question.getDescription());
             throw new DuplicateQuestionException("Question %s is already persisted.", question.getDescription());
         }
     }
@@ -106,11 +112,12 @@ class QuestionServiceImp implements QuestionService {
     /**
      * Import questions based on the module number from a local file.
      *
-     * @param moduleNumber the module number for importing questions
+     * @param moduleName the name of the module
      */
-    public void saveImportLocalQuestionByModuleNumber(final String fileName, final Integer moduleNumber) {
-        final ModuleEnum module = ModuleEnum.byModuleNumber(moduleNumber);
-        final List<Question> questions = ExamUtils.getAllQuestionsFromYamlLocaleFile(fileName, module);
+    public void saveImportLocalQuestionByFileName(final String fileName, final String moduleName) {
+
+        final List<Question> questions =
+                ExamUtils.getAllQuestionsFromYamlLocaleFile(String.format(filePath, fileName), moduleName);
         saveImportedQuestions(questions);
         LOGGER.log(Level.INFO,
                 String.format("%s questions successfully saved from local file named %s", questions.size(), fileName));
@@ -121,14 +128,14 @@ class QuestionServiceImp implements QuestionService {
      * Import questions from a file for a specific module.
      *
      * @param multipartFile the uploaded file containing questions
-     * @param moduleNumber  the module number for importing questions
+     * @param moduleName    the module name for importing questions
      */
-    public void saveImportQuestionsFromFile(final MultipartFile multipartFile, final Integer moduleNumber) {
-        final List<Question> questions =
-                ExamUtils.getAllQuestionsFromYamlMultipart(multipartFile, ModuleEnum.byModuleNumber(moduleNumber));
+    public void saveImportQuestionsFromFile(final MultipartFile multipartFile, final String moduleName) {
+        final List<Question> questions = ExamUtils.getAllQuestionsFromYamlMultipart(multipartFile, moduleName);
         saveImportedQuestions(questions);
         LOGGER.log(Level.INFO,
-                String.format("%s questions successfully saved from multipart file named %s", questions.size(), multipartFile));
+                String.format("%s questions successfully saved from multipart file named %s", questions.size(),
+                        multipartFile));
         answerService.saveAnswers(questions, questionRepository.findAll());
     }
 }

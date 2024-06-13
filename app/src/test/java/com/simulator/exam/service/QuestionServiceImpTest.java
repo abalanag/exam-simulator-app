@@ -16,11 +16,9 @@ import java.util.List;
 
 import com.simulator.exam.dto.QuestionDo;
 import com.simulator.exam.dto.QuestionsStructureDo;
-import com.simulator.exam.entity.ModuleEnum;
 import com.simulator.exam.entity.Question;
 import com.simulator.exam.exception.DuplicateQuestionException;
 import com.simulator.exam.repository.QuestionRepository;
-import com.simulator.exam.util.ExamUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -48,9 +46,7 @@ class QuestionServiceImpTest {
     private List<Question> questionList;
     private List<QuestionsStructureDo> structureList;
 
-    private static final ModuleEnum MODULE = ModuleEnum.SPRING_AOP;
-
-    private static final Integer MODULE_NUMBER = 2;
+    private static final String MODULE_NAME = "SPRING_AOP";
 
     private final static String FILE_NAME = "test-questions.yaml";
 
@@ -83,13 +79,13 @@ class QuestionServiceImpTest {
     @BeforeEach
     void setUp() {
         questionList = new ArrayList<>();
-        questionList.add(new Question("description1", Collections.emptyList(), MODULE));
-        questionList.add(new Question("description2", Collections.emptyList(), MODULE));
+        questionList.add(new Question("description1", Collections.emptyList(), MODULE_NAME));
+        questionList.add(new Question("description2", Collections.emptyList(), MODULE_NAME));
 
         structureList = new ArrayList<>();
-        structureList.add(new QuestionsStructureDo(MODULE.name(), 2));
+        structureList.add(new QuestionsStructureDo(MODULE_NAME, 2));
 
-        ExamUtils.setFilePath("src/test/resources/questions-files/%s");
+        questionService.setFilePath("src/test/resources/questions-files/%s");
     }
 
     @Test
@@ -104,17 +100,17 @@ class QuestionServiceImpTest {
 
     @Test
     void testGetRandomQuestionsByModule() {
-        when(questionRepository.getTopByModuleEnumQuestionOrderByRandom(2, MODULE.name())).thenReturn(questionList);
+        when(questionRepository.getTopByModuleEnumQuestionOrderByRandom(2, MODULE_NAME)).thenReturn(questionList);
 
-        final List<QuestionDo> result = questionService.getRandomQuestionsByModule(MODULE.name(), 2);
+        final List<QuestionDo> result = questionService.getRandomQuestionsByModule(MODULE_NAME, 2);
 
         assertEquals(2, result.size());
-        verify(questionRepository, times(1)).getTopByModuleEnumQuestionOrderByRandom(2, MODULE.name());
+        verify(questionRepository, times(1)).getTopByModuleEnumQuestionOrderByRandom(2, MODULE_NAME);
     }
 
     @Test
     void testGetQuestionsByStructure() {
-        when(questionRepository.getTopByModuleEnumQuestionOrderByRandom(2, MODULE.name())).thenReturn(questionList);
+        when(questionRepository.getTopByModuleEnumQuestionOrderByRandom(2, MODULE_NAME)).thenReturn(questionList);
 
         final List<QuestionDo> result = questionService.getQuestionsByStructure(structureList);
 
@@ -125,7 +121,7 @@ class QuestionServiceImpTest {
     void testSaveImportLocalQuestionByModuleNumber() {
         when(questionRepository.findAll()).thenReturn(Collections.emptyList());
 
-        questionService.saveImportLocalQuestionByModuleNumber(FILE_NAME, MODULE_NUMBER);
+        questionService.saveImportLocalQuestionByFileName(FILE_NAME, MODULE_NAME);
 
         verify(questionRepository, times(2)).save(any(Question.class));
         verify(answerService, times(1)).saveAnswers(anyList(), anyList());
@@ -137,7 +133,7 @@ class QuestionServiceImpTest {
                 new MockMultipartFile("file", validYamlData.getBytes()).getInputStream());
         when(questionRepository.findAll()).thenReturn(Collections.emptyList());
 
-        questionService.saveImportQuestionsFromFile(mockMultipartFile, MODULE_NUMBER);
+        questionService.saveImportQuestionsFromFile(mockMultipartFile, MODULE_NAME);
 
         verify(questionRepository, times(2)).save(any(Question.class));
         verify(answerService, times(1)).saveAnswers(anyList(), anyList());
@@ -146,12 +142,12 @@ class QuestionServiceImpTest {
     @Test
     void testSaveUniqueQuestionThroughSaveImportLocalQuestionByModuleNumber() {
 
-        final Question uniqueQuestion = new Question("uniqueDescription", Collections.emptyList(), MODULE);
+        final Question uniqueQuestion = new Question("uniqueDescription", Collections.emptyList(), MODULE_NAME);
         questionList.add(uniqueQuestion);
 
         when(questionRepository.findAll()).thenReturn(questionList.subList(0, 2));
 
-        questionService.saveImportLocalQuestionByModuleNumber(FILE_NAME, MODULE_NUMBER);
+        questionService.saveImportLocalQuestionByFileName(FILE_NAME, MODULE_NAME);
 
         verify(questionRepository, times(2)).save(any());
     }
@@ -159,13 +155,13 @@ class QuestionServiceImpTest {
     @Test
     void testSaveDuplicateQuestionThroughSaveImportLocalQuestionByModuleNumber() {
         final String fileName = "test-duplicated-questions.yaml";
-        final Question duplicateQuestion = new Question("description1", Collections.emptyList(), MODULE);
+        final Question duplicateQuestion = new Question("description1", Collections.emptyList(), MODULE_NAME);
         questionList.add(duplicateQuestion);
 
         when(questionRepository.findAll()).thenReturn(questionList.subList(0, 2));
 
         assertThrows(DuplicateQuestionException.class,
-                () -> questionService.saveImportLocalQuestionByModuleNumber(fileName, MODULE_NUMBER));
+                () -> questionService.saveImportLocalQuestionByFileName(fileName, MODULE_NAME));
 
         verify(questionRepository, never()).save(any());
     }
@@ -173,14 +169,14 @@ class QuestionServiceImpTest {
     @Test
     void testSaveUniqueQuestionThroughSaveImportQuestionsFromFile() throws IOException {
 
-        final Question uniqueQuestion = new Question("uniqueDescription", Collections.emptyList(), MODULE);
+        final Question uniqueQuestion = new Question("uniqueDescription", Collections.emptyList(), MODULE_NAME);
         questionList.add(uniqueQuestion);
 
         when(mockMultipartFile.getInputStream()).thenReturn(
                 new MockMultipartFile("file", validYamlData.getBytes()).getInputStream());
         when(questionRepository.findAll()).thenReturn(questionList.subList(0, 2));
 
-        questionService.saveImportQuestionsFromFile(mockMultipartFile, MODULE_NUMBER);
+        questionService.saveImportQuestionsFromFile(mockMultipartFile, MODULE_NAME);
 
         verify(questionRepository, times(2)).save(any(Question.class));
     }
@@ -188,7 +184,7 @@ class QuestionServiceImpTest {
     @Test
     void testSaveDuplicateQuestionThroughSaveImportQuestionsFromFile() throws IOException {
 
-        final Question duplicateQuestion = new Question("description1", Collections.emptyList(), MODULE);
+        final Question duplicateQuestion = new Question("description1", Collections.emptyList(), MODULE_NAME);
         questionList.add(duplicateQuestion);
 
         when(mockMultipartFile.getInputStream()).thenReturn(
@@ -196,7 +192,7 @@ class QuestionServiceImpTest {
         when(questionRepository.findAll()).thenReturn(questionList.subList(0, 2));
 
         assertThrows(DuplicateQuestionException.class,
-                () -> questionService.saveImportQuestionsFromFile(mockMultipartFile, MODULE_NUMBER));
+                () -> questionService.saveImportQuestionsFromFile(mockMultipartFile, MODULE_NAME));
 
         verify(questionRepository, never()).save(any(Question.class));
     }

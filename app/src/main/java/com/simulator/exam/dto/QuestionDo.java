@@ -2,7 +2,6 @@ package com.simulator.exam.dto;
 
 import java.util.List;
 
-import com.simulator.exam.entity.ModuleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,11 +19,11 @@ public class QuestionDo {
     private List<AnswerDo> answers;
 
     @Nullable
-    private ModuleEnum moduleEnum;
+    private String moduleName;
 
-    public QuestionDo(final String question, final List<AnswerDo> answers, @Nullable final ModuleEnum moduleEnum) {
+    public QuestionDo(final String question, final List<AnswerDo> answers, @Nullable final String moduleName) {
         this.question = question;
         this.answers = answers;
-        this.moduleEnum = moduleEnum;
+        this.moduleName = moduleName;
     }
 }

@@ -9,10 +9,8 @@ import static org.mockito.Mockito.when;
 import java.io.IOException;
 import java.util.List;
 
-import com.simulator.exam.entity.ModuleEnum;
 import com.simulator.exam.entity.Question;
 import com.simulator.exam.exception.LocalFileNotFoundException;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,13 +18,13 @@ import org.yaml.snakeyaml.constructor.ConstructorException;
 
 class ExamUtilsTest {
 
-    private static final ModuleEnum MODULE_ENUM = ModuleEnum.SPRING_AOP;
-    private ModuleEnum invalidModule;
-    private static final String TEST_FILE_NAME = "test-questions.yaml";
+    private static final String MODULE_NAME = "SPRING_AOP";
 
-    private final String INVALID_FILE_NAME = "missing-test.yml";
+    private static final String TEST_FILE_NAME = "src/test/resources/questions-files/test-questions.yaml";
 
-    private final String WRONG_FORMAT_FILE_NAME = "test-wrong-format-questions.yaml";
+    private final String INVALID_FILE_NAME = "src/test/resources/questions-files/missing-test.yml";
+
+    private final String WRONG_FORMAT_FILE_NAME = "src/test/resources/questions-files/test-wrong-format-questions.yaml";
 
     private final String validYamlData = """
             questions:
@@ -47,14 +45,9 @@ class ExamUtilsTest {
                   - option: "5"
                     correct: false""";
 
-    @BeforeEach
-    void setUp() {
-        ExamUtils.setFilePath("src/test/resources/questions-files/%s");
-    }
-
     @Test
     void testGetAllQuestionsFromYamlLocaleFilePositive() {
-        final List<Question> questions = ExamUtils.getAllQuestionsFromYamlLocaleFile(TEST_FILE_NAME, MODULE_ENUM);
+        final List<Question> questions = ExamUtils.getAllQuestionsFromYamlLocaleFile(TEST_FILE_NAME, MODULE_NAME);
         assertNotNull(questions);
         assertEquals(2, questions.size());
         assertEquals("What is the capital of Canada?", questions.get(0).getDescription());
@@ -73,13 +66,13 @@ class ExamUtilsTest {
     @Test
     void testGetAllQuestionsFromYamlLocaleFileNegative() {
         assertThrows(LocalFileNotFoundException.class,
-                () -> ExamUtils.getAllQuestionsFromYamlLocaleFile(INVALID_FILE_NAME, invalidModule));
+                () -> ExamUtils.getAllQuestionsFromYamlLocaleFile(INVALID_FILE_NAME, "invalidModule"));
     }
 
     @Test
     void testGetAllQuestionsFromYamlLocaleFileWrongFormat() {
         assertThrows(ConstructorException.class,
-                () -> ExamUtils.getAllQuestionsFromYamlLocaleFile(WRONG_FORMAT_FILE_NAME, invalidModule));
+                () -> ExamUtils.getAllQuestionsFromYamlLocaleFile(WRONG_FORMAT_FILE_NAME, "invalidModule"));
     }
 
     @Test
@@ -88,7 +81,7 @@ class ExamUtilsTest {
         when(mockMultipartFile.getInputStream()).thenReturn(
                 new MockMultipartFile("file", validYamlData.getBytes()).getInputStream());
 
-        final List<Question> questions = ExamUtils.getAllQuestionsFromYamlMultipart(mockMultipartFile, MODULE_ENUM);
+        final List<Question> questions = ExamUtils.getAllQuestionsFromYamlMultipart(mockMultipartFile, MODULE_NAME);
         assertNotNull(questions);
         assertEquals(2, questions.size());
         assertEquals("What is 2 + 2?", questions.get(1).getDescription());
@@ -101,6 +94,6 @@ class ExamUtilsTest {
                 new MockMultipartFile("empty", new byte[0]).getInputStream());
 
         assertThrows(RuntimeException.class,
-                () -> ExamUtils.getAllQuestionsFromYamlMultipart(emptyMultipartFile, MODULE_ENUM));
+                () -> ExamUtils.getAllQuestionsFromYamlMultipart(emptyMultipartFile, MODULE_NAME));
     }
 }

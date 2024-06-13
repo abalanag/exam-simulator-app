@@ -11,6 +11,6 @@ public interface QuestionService {
     List<QuestionDo> getRandomQuestions();
     List<QuestionDo> getRandomQuestionsByModule(final String module, final int numberOfQuestions);
     List<QuestionDo> getQuestionsByStructure(final List<QuestionsStructureDo> structureList);
-    void saveImportLocalQuestionByModuleNumber(final String fileName, final Integer moduleNumber);
-    void saveImportQuestionsFromFile(final MultipartFile multipartFile, final Integer moduleNumber);
+    void saveImportLocalQuestionByFileName(final String fileName, final String moduleName);
+    void saveImportQuestionsFromFile(final MultipartFile multipartFile, final String moduleName);
 }

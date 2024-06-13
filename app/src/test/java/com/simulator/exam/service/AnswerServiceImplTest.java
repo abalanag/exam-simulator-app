@@ -14,7 +14,6 @@ import java.util.List;
 
 import com.simulator.exam.dto.AnswerDo;
 import com.simulator.exam.entity.Answer;
-import com.simulator.exam.entity.ModuleEnum;
 import com.simulator.exam.entity.Question;
 import com.simulator.exam.exception.DuplicateAnswerException;
 import com.simulator.exam.exception.FileQuestionNotPersistedException;
@@ -43,11 +42,9 @@ class AnswerServiceImplTest {
     @Test
     void testSaveAnswersSuccessfully() {
         final List<Question> questionsFromYaml =
-                List.of(new Question("What is Java?", List.of(new Answer("Programming language", true)),
-                        ModuleEnum.SPRING_AOP));
+                List.of(new Question("What is Java?", List.of(new Answer("Programming language", true)), "SPRING_AOP"));
 
-        final List<Question> databaseQuestions =
-                List.of(new Question("What is Java?", List.of(), ModuleEnum.SPRING_AOP));
+        final List<Question> databaseQuestions = List.of(new Question("What is Java?", List.of(), "SPRING_AOP"));
 
         answerServiceImpl.saveAnswers(questionsFromYaml, databaseQuestions);
 
@@ -60,11 +57,9 @@ class AnswerServiceImplTest {
     @Test
     void testSaveAnswersWithDuplicateAnswerException() {
         final List<Question> questionsFromYaml =
-                List.of(new Question("What is Java?", List.of(new Answer("Programming language", true)),
-                        ModuleEnum.SPRING_AOP));
+                List.of(new Question("What is Java?", List.of(new Answer("Programming language", true)), "SPRING_AOP"));
 
-        final List<Question> databaseQuestions =
-                List.of(new Question("What is Java?", List.of(), ModuleEnum.SPRING_AOP));
+        final List<Question> databaseQuestions = List.of(new Question("What is Java?", List.of(), "SPRING_AOP"));
 
         doThrow(EntityExistsException.class).when(answerRepository).save(any(Answer.class));
 
@@ -102,11 +97,9 @@ class AnswerServiceImplTest {
     @Test
     void testSaveAnswersWithMismatchedQuestions() {
         final List<Question> questionsFromYaml =
-                List.of(new Question("What is Java?", List.of(new Answer("Programming language", true)),
-                        ModuleEnum.SPRING_AOP));
+                List.of(new Question("What is Java?", List.of(new Answer("Programming language", true)), "SPRING_AOP"));
 
-        final List<Question> databaseQuestions =
-                List.of(new Question("What is Python?", List.of(), ModuleEnum.SPRING_AOP));
+        final List<Question> databaseQuestions = List.of(new Question("What is Python?", List.of(), "SPRING_AOP"));
 
         assertThrows(FileQuestionNotPersistedException.class,
                 () -> answerServiceImpl.saveAnswers(questionsFromYaml, databaseQuestions));
@@ -117,8 +110,7 @@ class AnswerServiceImplTest {
     @Test
     void testSaveAnswersWithNoMatchingDatabaseQuestions() {
         final List<Question> questionsFromYaml =
-                List.of(new Question("What is Java?", List.of(new Answer("Programming language", true)),
-                        ModuleEnum.SPRING_AOP));
+                List.of(new Question("What is Java?", List.of(new Answer("Programming language", true)), "SPRING_AOP"));
 
         final List<Question> databaseQuestions = Collections.emptyList();
 
@@ -138,6 +130,6 @@ class AnswerServiceImplTest {
 
     private void callSaveAnswersWithSecondNull() {
         answerServiceImpl.saveAnswers(
-                List.of(new Question("How are you", List.of(new Answer("Good", true)), ModuleEnum.SPRING_AOP)), null);
+                List.of(new Question("How are you", List.of(new Answer("Good", true)), "SPRING_AOP")), null);
     }
 }

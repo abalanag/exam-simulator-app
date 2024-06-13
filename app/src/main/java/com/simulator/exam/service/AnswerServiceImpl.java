@@ -44,7 +44,7 @@ class AnswerServiceImpl implements AnswerService {
                         answer.getQuestion().getDescription(), e);
             }
         });
-        LOGGER.log(Level.INFO, "{} answers have been saved successfully", answersToBeSaved.size());
+        LOGGER.log(Level.INFO, "{0} answers have been saved successfully", answersToBeSaved.size());
     }
 
     /**
@@ -67,7 +67,7 @@ class AnswerServiceImpl implements AnswerService {
                 answer.setQuestion(question);
                 answers.add(answer);
             }), () -> {
-                throw new FileQuestionNotPersistedException("Question {} from file is not sored in the database",
+                throw new FileQuestionNotPersistedException("Question {0} from file is not sored in the database",
                         importedQuestion.getDescription());
             });
         }

@@ -35,14 +35,15 @@ public class QuestionController {
     /**
      * Imports questions based on the module number from a file with the given name.
      *
-     * @param moduleNumber The module number for importing questions.
+     * @param fileName the name of the file that needs to be imported
+     * @param moduleName The module name of the importing questions.
      * @return HTTP status indicating success (ACCEPTED).
      */
-    @PostMapping(value = { "/import/{fileName}/{moduleNumber}", "/import/{fileName}" })
+    @PostMapping(value = { "/import/{fileName}/{moduleName}", "/import/{fileName}" })
     public HttpStatus importLocalQuestionsToDatabase(@PathVariable("fileName") final String fileName,
-            @PathVariable(value = "moduleNumber", required = false) final Integer moduleNumber) {
+            @PathVariable(value = "moduleName", required = false) final String moduleName) {
 
-        questionService.saveImportLocalQuestionByModuleNumber(fileName, moduleNumber);
+        questionService.saveImportLocalQuestionByFileName(fileName, moduleName);
         return HttpStatus.CREATED;
     }
 
@@ -92,14 +93,14 @@ public class QuestionController {
      * Imports questions from a file for a specific module.
      *
      * @param multipartFile The uploaded file containing questions.
-     * @param moduleNumber  The module number for importing questions.
+     * @param moduleName  The module name of where the questions belong
      * @return HTTP status indicating success or failure.
      */
-    @PostMapping(value = "/import/from-file/{moduleNumber}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/import/from-file/{moduleName}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public HttpStatus importQuestionsToDatabaseFromFile(@RequestPart("file") final MultipartFile multipartFile,
-            @PathVariable final Integer moduleNumber) {
+            @PathVariable final String moduleName) {
 
-        questionService.saveImportQuestionsFromFile(multipartFile, moduleNumber);
+        questionService.saveImportQuestionsFromFile(multipartFile, moduleName);
         return HttpStatus.CREATED;
     }
 }
