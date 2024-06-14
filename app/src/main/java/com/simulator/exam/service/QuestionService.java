@@ -30,13 +30,13 @@ public interface QuestionService {
 
     void deleteAnswersForGivenQuestion(long id);
 
-    List<Question> updateQuestion(List<Question> questions);
+    List<QuestionDo> updateQuestion(List<Question> questions);
 
-    Question updateQuestionById(Question question, Long id);
+    QuestionDo updateQuestionById(Question question, Long id);
 
-    Question updateQuestionByQuestionId(List<Answer> answers, Long id);
+    QuestionDo updateQuestionByQuestionId(List<Answer> answers, Long id);
 
-    Question updatedQuestionPropertiesById(Long id, Question question);
+    QuestionDo updatedQuestionPropertiesById(Long id, Question question);
 
-    List<Question> updatedQuestionsPropertiesById(List<Question> question);
+    List<QuestionDo> updatedQuestionsPropertiesById(List<Question> question);
 }

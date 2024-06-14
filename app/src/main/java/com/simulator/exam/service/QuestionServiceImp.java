@@ -13,6 +13,7 @@ import com.simulator.exam.dto.QuestionsStructureDo;
 import com.simulator.exam.entity.Answer;
 import com.simulator.exam.entity.Question;
 import com.simulator.exam.exception.DuplicateQuestionException;
+import com.simulator.exam.exception.ModuleNotFoundException;
 import com.simulator.exam.repository.QuestionRepository;
 import com.simulator.exam.util.ExamUtils;
 import jakarta.persistence.EntityNotFoundException;
@@ -72,6 +73,9 @@ class QuestionServiceImp implements QuestionService {
      * @return list of random questions
      */
     public List<QuestionDo> getRandomQuestionsByModule(final String module, final int numberOfQuestions) {
+        if (!StringUtils.hasText(module) || questionRepository.moduleHasNoQuestions(module)) {
+            throw new ModuleNotFoundException(module);
+        }
         return questionRepository.getTopByModuleEnumQuestionOrderByRandom(numberOfQuestions, module).stream()
                 .map(this::mapQuestionToQuestionDo).toList();
     }
@@ -93,9 +97,10 @@ class QuestionServiceImp implements QuestionService {
      * @param question the question to save
      */
     private void saveUniqueQuestion(final Question question) {
-        if (!questionRepository.findAll().stream().map(Question::getDescription).toList()
-                .contains(question.getDescription())) {
-            questionRepository.save(new Question(question.getDescription(), List.of(), question.getModuleName()));
+        final boolean exists = questionRepository.isQuestionAlreadySaved(question.getDescription());
+        if (!exists) {
+            question.getAnswers().forEach(answer -> answer.setQuestion(question));
+            questionRepository.save(question);
         } else {
             LOGGER.log(Level.WARNING, "Question {0} is already persisted", question.getDescription());
             throw new DuplicateQuestionException("Question %s is already persisted.", question.getDescription());
@@ -127,7 +132,6 @@ class QuestionServiceImp implements QuestionService {
         saveImportedQuestions(questions);
         LOGGER.log(Level.INFO,
                 String.format("%s questions successfully saved from local file named %s", questions.size(), fileName));
-        answerService.saveAnswers(questions, questionRepository.findAll());
     }
 
     /**
@@ -142,7 +146,6 @@ class QuestionServiceImp implements QuestionService {
         LOGGER.log(Level.INFO,
                 String.format("%s questions successfully saved from multipart file named %s", questions.size(),
                         multipartFile));
-        answerService.saveAnswers(questions, questionRepository.findAll());
     }
 
     /**
@@ -184,7 +187,7 @@ class QuestionServiceImp implements QuestionService {
      */
     @Override
     public void saveQuestions(final List<Question> questions) {
-        questionRepository.saveAll(questions);
+        questions.forEach(this::saveUniqueQuestion);
     }
 
     /**
@@ -196,8 +199,7 @@ class QuestionServiceImp implements QuestionService {
     @Override
     public void saveAnswersForThGivenQuestion(final Long id, final List<Answer> answers) {
         final Question question = getQuestionFromDatabaseOrThrowException(id);
-
-        answerService.saveAnswersForTheGivenQuestion(question, answers);
+        question.setAnswers(answers);
     }
 
     /**
@@ -238,20 +240,20 @@ class QuestionServiceImp implements QuestionService {
      * @return the updated list of questions
      */
     @Override
-    public List<Question> updateQuestion(final List<Question> questions) {
-        final Map<Long, Question> savedQuestionsMap =
-                questionRepository.findAllById(questions.stream().map(Question::getId).toList()).stream()
-                        .collect(Collectors.toMap(Question::getId, q -> q));
+    public List<QuestionDo> updateQuestion(final List<Question> questions) {
+        final Map<String, Question> savedQuestionsMap =
+                questionRepository.findAllByDescriptionIn(questions.stream().map(Question::getDescription).toList())
+                        .stream().collect(Collectors.toMap(Question::getDescription, q -> q));
 
         questions.forEach(q -> {
-            final Question dbq = savedQuestionsMap.get(q.getId());
+            final Question dbq = savedQuestionsMap.get(q.getDescription());
             if (dbq != null) {
                 dbq.setDescription(q.getDescription());
                 dbq.setModuleName(q.getModuleName());
                 dbq.setAnswers(q.getAnswers());
             }
         });
-        return savedQuestionsMap.values().stream().toList();
+        return savedQuestionsMap.values().stream().map(this::mapQuestionToQuestionDo).toList();
     }
 
     /**
@@ -262,12 +264,12 @@ class QuestionServiceImp implements QuestionService {
      * @return the updated question
      */
     @Override
-    public Question updateQuestionById(final Question question, final Long id) {
+    public QuestionDo updateQuestionById(final Question question, final Long id) {
         final Question dbQuestion = getQuestionFromDatabaseOrThrowException(id);
         dbQuestion.setDescription(question.getDescription());
         dbQuestion.setAnswers(question.getAnswers());
         dbQuestion.setModuleName(question.getModuleName());
-        return dbQuestion;
+        return mapQuestionToQuestionDo(dbQuestion);
     }
 
     /**
@@ -278,34 +280,35 @@ class QuestionServiceImp implements QuestionService {
      * @return the updated question
      */
     @Override
-    public Question updateQuestionByQuestionId(final List<Answer> answers, final Long id) {
+    public QuestionDo updateQuestionByQuestionId(final List<Answer> answers, final Long id) {
         final Question dbQuestion = getQuestionFromDatabaseOrThrowException(id);
         dbQuestion.setAnswers(answers);
-        return dbQuestion;
+        return mapQuestionToQuestionDo(dbQuestion);
     }
 
     @Override
-    public Question updatedQuestionPropertiesById(final Long id, final Question question) {
+    public QuestionDo updatedQuestionPropertiesById(final Long id, final Question question) {
         final Question databaseQuestion = getQuestionFromDatabaseOrThrowException(id);
+
         return updateOnlyRequiredFields(databaseQuestion, question);
     }
 
     @Override
-    public List<Question> updatedQuestionsPropertiesById(final List<Question> questions) {
-        final Map<Long, Question> savedQuestionsMap =
-                questionRepository.findAllById(questions.stream().map(Question::getId).toList()).stream()
-                        .collect(Collectors.toMap(Question::getId, q -> q));
+    public List<QuestionDo> updatedQuestionsPropertiesById(final List<Question> questions) {
+        final Map<String, Question> savedQuestionsMap =
+                questionRepository.findAllByDescriptionIn(questions.stream().map(Question::getDescription).toList())
+                        .stream().collect(Collectors.toMap(Question::getDescription, q -> q));
 
         questions.forEach(q -> {
-            final Question dbq = savedQuestionsMap.get(q.getId());
+            final Question dbq = savedQuestionsMap.get(q.getDescription());
             if (dbq != null) {
                 updateOnlyRequiredFields(dbq, q);
             }
         });
-        return savedQuestionsMap.values().stream().toList();
+        return savedQuestionsMap.values().stream().map(this::mapQuestionToQuestionDo).toList();
     }
 
-    public Question updateOnlyRequiredFields(final Question databaseQuestion, final Question updateField) {
+    public QuestionDo updateOnlyRequiredFields(final Question databaseQuestion, final Question updateField) {
         if (StringUtils.hasText(updateField.getDescription())) {
             databaseQuestion.setDescription(updateField.getDescription());
         }
@@ -315,7 +318,7 @@ class QuestionServiceImp implements QuestionService {
         if (!updateField.getAnswers().isEmpty()) {
             databaseQuestion.setAnswers(updateField.getAnswers());
         }
-        return databaseQuestion;
+        return mapQuestionToQuestionDo(databaseQuestion);
     }
 
     private Question getQuestionFromDatabaseOrThrowException(final long id) {

@@ -43,4 +43,11 @@ public class Question {
         this.answers = answers;
         this.moduleName = moduleName;
     }
+
+    public void setAnswers(final List<Answer> answers) {
+        this.answers = answers;
+        if (answers != null) {
+            answers.forEach(answer -> answer.setQuestion(this));
+        }
+    }
 }

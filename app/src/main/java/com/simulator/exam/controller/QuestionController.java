@@ -138,21 +138,18 @@ public class QuestionController {
         return HttpStatus.CREATED;
     }
 
-    //TODO: TO BE DONE
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Question>> updateQuestions(@RequestBody final List<Question> question) {
+    public ResponseEntity<List<QuestionDo>> updateQuestions(@RequestBody final List<Question> question) {
         return ResponseEntity.ok(questionService.updateQuestion(question));
     }
 
-    // TODO: TO BE DONE
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Question> updateQuestionById(@RequestBody final Question question, @PathVariable final Long id) {
+    public ResponseEntity<QuestionDo> updateQuestionById(@RequestBody final Question question, @PathVariable final Long id) {
         return ResponseEntity.ok(questionService.updateQuestionById(question,id));
     }
 
-    // TODO: TO BE DONE
     @PutMapping(path = "/{id}/answers", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Question> updateAnswersForGivenQuestionById(@RequestBody final List<Answer> answers,
+    public ResponseEntity<QuestionDo> updateAnswersForGivenQuestionById(@RequestBody final List<Answer> answers,
             @PathVariable final Long id) {
         return ResponseEntity.ok(questionService.updateQuestionByQuestionId(answers, id));
     }
@@ -176,12 +173,12 @@ public class QuestionController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Question> updateQuestionProperties(@PathVariable final Long id, @RequestBody final Question question) {
+    public ResponseEntity<QuestionDo> updateQuestionProperties(@PathVariable final Long id, @RequestBody final Question question) {
         return ResponseEntity.ok(questionService.updatedQuestionPropertiesById(id, question));
     }
 
     @PatchMapping
-    public ResponseEntity<List<Question>> updateQuestionProperties(@RequestBody final List<Question> question) {
+    public ResponseEntity<List<QuestionDo>> updateQuestionProperties(@RequestBody final List<Question> question) {
         return ResponseEntity.ok(questionService.updatedQuestionsPropertiesById(question));
     }
 }
