@@ -36,6 +36,8 @@ class QuestionServiceImp implements QuestionService {
     @Value("${app.question.file.locale.path}")
     private String filePath;
 
+    private static final String MISSING_QUESTION_ID = "Missing id for provided question: %s";
+
     @Autowired
     public QuestionServiceImp(final QuestionRepository questionRepository, final AnswerService answerService) {
         this.questionRepository = questionRepository;
@@ -87,8 +89,8 @@ class QuestionServiceImp implements QuestionService {
      * @return the mapped QuestionDo
      */
     private QuestionDo mapQuestionToQuestionDo(final Question question) {
-        return new QuestionDo(question.getDescription(), answerService.mapAnswersToAnswerDo(question.getAnswers()),
-                question.getModuleName());
+        return new QuestionDo(question.getId(), question.getDescription(),
+                answerService.mapAnswersToAnswerDo(question.getAnswers()), question.getModuleName());
     }
 
     /**
@@ -155,7 +157,11 @@ class QuestionServiceImp implements QuestionService {
      */
     @Override
     public List<QuestionDo> getAllQuestions() {
-        return questionRepository.findAll().stream().map(this::mapQuestionToQuestionDo).toList();
+        final List<Question> questions = questionRepository.findAll();
+        if (questions.isEmpty()) {
+            return List.of();
+        }
+        return questions.stream().map(this::mapQuestionToQuestionDo).toList();
     }
 
     /**
@@ -166,7 +172,7 @@ class QuestionServiceImp implements QuestionService {
      */
     @Override
     public QuestionDo getQuestionById(final Long id) {
-        return mapQuestionToQuestionDo(questionRepository.getReferenceById(id));
+        return mapQuestionToQuestionDo(getQuestionFromDatabaseOrThrowException(id));
     }
 
     /**
@@ -177,7 +183,7 @@ class QuestionServiceImp implements QuestionService {
      */
     @Override
     public List<AnswerDo> getAnswersForQuestionId(final Long id) {
-        return answerService.mapAnswersToAnswerDo(questionRepository.getReferenceById(id).getAnswers());
+        return answerService.mapAnswersToAnswerDo(getQuestionFromDatabaseOrThrowException(id).getAnswers());
     }
 
     /**
@@ -241,12 +247,12 @@ class QuestionServiceImp implements QuestionService {
      */
     @Override
     public List<QuestionDo> updateQuestion(final List<Question> questions) {
-        final Map<String, Question> savedQuestionsMap =
-                questionRepository.findAllByDescriptionIn(questions.stream().map(Question::getDescription).toList())
-                        .stream().collect(Collectors.toMap(Question::getDescription, q -> q));
+        final Map<Long, Question> savedQuestionsMap =
+                questionRepository.findAllById(questions.stream().map(Question::getId).toList()).stream()
+                        .collect(Collectors.toMap(Question::getId, q -> q));
 
         questions.forEach(q -> {
-            final Question dbq = savedQuestionsMap.get(q.getDescription());
+            final Question dbq = savedQuestionsMap.get(q.getId());
             if (dbq != null) {
                 dbq.setDescription(q.getDescription());
                 dbq.setModuleName(q.getModuleName());
@@ -280,7 +286,7 @@ class QuestionServiceImp implements QuestionService {
      * @return the updated question
      */
     @Override
-    public QuestionDo updateQuestionByQuestionId(final List<Answer> answers, final Long id) {
+    public QuestionDo updateQuestionAnswersByQuestionId(final List<Answer> answers, final Long id) {
         final Question dbQuestion = getQuestionFromDatabaseOrThrowException(id);
         dbQuestion.setAnswers(answers);
         return mapQuestionToQuestionDo(dbQuestion);
@@ -295,12 +301,15 @@ class QuestionServiceImp implements QuestionService {
 
     @Override
     public List<QuestionDo> updatedQuestionsPropertiesById(final List<Question> questions) {
-        final Map<String, Question> savedQuestionsMap =
-                questionRepository.findAllByDescriptionIn(questions.stream().map(Question::getDescription).toList())
-                        .stream().collect(Collectors.toMap(Question::getDescription, q -> q));
+        final Map<Long, Question> savedQuestionsMap =
+                questionRepository.findAllById(questions.stream().map(Question::getId).toList()).stream()
+                        .collect(Collectors.toMap(Question::getId, q -> q));
 
         questions.forEach(q -> {
-            final Question dbq = savedQuestionsMap.get(q.getDescription());
+            if (q.getId() == null || q.getId() <= 0) {
+                throw new EntityNotFoundException(String.format(MISSING_QUESTION_ID, q));
+            }
+            final Question dbq = savedQuestionsMap.get(q.getId());
             if (dbq != null) {
                 updateOnlyRequiredFields(dbq, q);
             }
@@ -308,14 +317,14 @@ class QuestionServiceImp implements QuestionService {
         return savedQuestionsMap.values().stream().map(this::mapQuestionToQuestionDo).toList();
     }
 
-    public QuestionDo updateOnlyRequiredFields(final Question databaseQuestion, final Question updateField) {
+    private QuestionDo updateOnlyRequiredFields(final Question databaseQuestion, final Question updateField) {
         if (StringUtils.hasText(updateField.getDescription())) {
             databaseQuestion.setDescription(updateField.getDescription());
         }
         if (StringUtils.hasText(updateField.getModuleName())) {
             databaseQuestion.setModuleName(updateField.getModuleName());
         }
-        if (!updateField.getAnswers().isEmpty()) {
+        if (updateField.getAnswers() != null && !updateField.getAnswers().isEmpty()) {
             databaseQuestion.setAnswers(updateField.getAnswers());
         }
         return mapQuestionToQuestionDo(databaseQuestion);

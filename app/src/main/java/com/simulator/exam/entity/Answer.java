@@ -38,4 +38,15 @@ public class Answer {
         this.option = option;
         this.correct = correct;
     }
+
+    public Answer(final Long id, final String option, final boolean correct) {
+        this.id = id;
+        this.option = option;
+        this.correct = correct;
+    }
+
+    @Override
+    public String toString() {
+        return "Answer{" + "id=" + id + ", option='" + option + '\'' + ", correct=" + correct + '}';
+    }
 }

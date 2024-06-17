@@ -34,7 +34,7 @@ public interface QuestionService {
 
     QuestionDo updateQuestionById(Question question, Long id);
 
-    QuestionDo updateQuestionByQuestionId(List<Answer> answers, Long id);
+    QuestionDo updateQuestionAnswersByQuestionId(List<Answer> answers, Long id);
 
     QuestionDo updatedQuestionPropertiesById(Long id, Question question);
 

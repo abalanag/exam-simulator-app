@@ -2,7 +2,6 @@ package com.simulator.exam.service;
 
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import com.simulator.exam.dto.AnswerDo;
@@ -13,8 +12,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 class AnswerServiceImpl implements AnswerService {
-
-    private static final Logger LOGGER = Logger.getLogger("application.logger");
     private static final String MISSING_ENTITY_MESSAGE = "Answer with id %s doesn't exist";
 
     private final AnswerRepository answerRepository;

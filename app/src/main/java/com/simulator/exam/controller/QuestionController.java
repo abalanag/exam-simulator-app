@@ -151,7 +151,7 @@ public class QuestionController {
     @PutMapping(path = "/{id}/answers", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<QuestionDo> updateAnswersForGivenQuestionById(@RequestBody final List<Answer> answers,
             @PathVariable final Long id) {
-        return ResponseEntity.ok(questionService.updateQuestionByQuestionId(answers, id));
+        return ResponseEntity.ok(questionService.updateQuestionAnswersByQuestionId(answers, id));
     }
 
     @DeleteMapping
