@@ -252,6 +252,9 @@ class QuestionServiceImp implements QuestionService {
                         .collect(Collectors.toMap(Question::getId, q -> q));
 
         questions.forEach(q -> {
+            if (q.getId() == null || q.getId() <= 0) {
+                throw new EntityNotFoundException(String.format(MISSING_QUESTION_ID, q));
+            }
             final Question dbq = savedQuestionsMap.get(q.getId());
             if (dbq != null) {
                 dbq.setDescription(q.getDescription());

@@ -16,6 +16,8 @@ class AnswerServiceImpl implements AnswerService {
 
     private final AnswerRepository answerRepository;
 
+    private static final String MISSING_ANSWER_ID = "Missing id for provided answer: %s";
+
     public AnswerServiceImpl(final AnswerRepository answerRepository) {
         this.answerRepository = answerRepository;
     }
@@ -45,6 +47,9 @@ class AnswerServiceImpl implements AnswerService {
 
         answers.forEach(a -> {
             final Answer dba = savedAnswersMap.get(a.getId());
+            if (a.getId() == null || a.getId() <= 0) {
+                throw new EntityNotFoundException(String.format(MISSING_ANSWER_ID, a));
+            }
             if (dba != null) {
                 dba.setCorrect(a.isCorrect());
                 dba.setOption(a.getOption());
@@ -68,5 +73,4 @@ class AnswerServiceImpl implements AnswerService {
         dbAnswer.setCorrect(answer.isCorrect());
         return dbAnswer;
     }
-
 }

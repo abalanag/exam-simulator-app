@@ -1,5 +1,7 @@
 package com.simulator.exam.entity;
 
+import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -48,5 +50,23 @@ public class Answer {
     @Override
     public String toString() {
         return "Answer{" + "id=" + id + ", option='" + option + '\'' + ", correct=" + correct + '}';
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        final Answer answer = (Answer) o;
+        return correct == answer.correct && Objects.equals(id, answer.id) && Objects.equals(option, answer.option)
+                && Objects.equals(question, answer.question);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, option, correct, question);
     }
 }

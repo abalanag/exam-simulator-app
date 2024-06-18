@@ -388,6 +388,15 @@ class QuestionServiceImpTest {
     }
 
     @Test
+    void testUpdateQuestionWithWrongQuestionId2() {
+        newQuestion.setDescription("New Description");
+        newQuestion.setAnswers(answerList);
+        final List<Question> listOfNewQuestions = List.of(newQuestion);
+
+        assertThrows(EntityNotFoundException.class, () -> questionService.updateQuestion(listOfNewQuestions));
+    }
+
+    @Test
     void testUpdateQuestionAnswersByQuestionId() {
         when(questionRepository.findById(1L)).thenReturn(Optional.of(questionWithAnswerList));
 

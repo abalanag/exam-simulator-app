@@ -3,7 +3,6 @@ package com.simulator.exam.util;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
@@ -11,20 +10,31 @@ import java.util.List;
 
 import com.simulator.exam.entity.Question;
 import com.simulator.exam.exception.LocalFileNotFoundException;
+import com.simulator.exam.exception.MultipartFileLoaderException;
+import com.simulator.exam.exception.QuestionLoaderException;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 import org.yaml.snakeyaml.constructor.ConstructorException;
 
+@ExtendWith(MockitoExtension.class)
 class ExamUtilsTest {
 
     private static final String MODULE_NAME = "SPRING_AOP";
+
+    @Mock
+    private MultipartFile mockMultipartFile;
 
     private static final String TEST_FILE_NAME = "src/test/resources/questions-files/test-questions.yaml";
 
     private final String INVALID_FILE_NAME = "src/test/resources/questions-files/missing-test.yml";
 
     private final String WRONG_FORMAT_FILE_NAME = "src/test/resources/questions-files/test-wrong-format-questions.yaml";
+
+    private final String EMPTY_QUESTIONS_FILE_NAME = "src/test/resources/questions-files/test-questions-empty.yaml";
 
     private final String validYamlData = """
             questions:
@@ -76,8 +86,13 @@ class ExamUtilsTest {
     }
 
     @Test
+    void testGetAllQuestionsFromYamlLocaleFileWithEmptyQuestion() {
+        assertThrows(QuestionLoaderException.class,
+                () -> ExamUtils.getAllQuestionsFromYamlLocaleFile(EMPTY_QUESTIONS_FILE_NAME, "invalidModule"));
+    }
+
+    @Test
     void testGetAllQuestionsFromYamlMultipartPositive() throws IOException {
-        final MultipartFile mockMultipartFile = mock(MultipartFile.class);
         when(mockMultipartFile.getInputStream()).thenReturn(
                 new MockMultipartFile("file", validYamlData.getBytes()).getInputStream());
 
@@ -89,11 +104,18 @@ class ExamUtilsTest {
 
     @Test
     void testGetAllQuestionsFromYamlMultipartNegative() throws IOException {
-        final MultipartFile emptyMultipartFile = mock(MultipartFile.class);
-        when(emptyMultipartFile.getInputStream()).thenReturn(
+        when(mockMultipartFile.getInputStream()).thenReturn(
                 new MockMultipartFile("empty", new byte[0]).getInputStream());
 
         assertThrows(RuntimeException.class,
-                () -> ExamUtils.getAllQuestionsFromYamlMultipart(emptyMultipartFile, MODULE_NAME));
+                () -> ExamUtils.getAllQuestionsFromYamlMultipart(mockMultipartFile, MODULE_NAME));
+    }
+
+    @Test
+    void testGetAllQuestionsFromYamlMultipartIOException() throws IOException {
+        when(mockMultipartFile.getInputStream()).thenThrow(IOException.class);
+
+        assertThrows(MultipartFileLoaderException.class,
+                () -> ExamUtils.getAllQuestionsFromYamlMultipart(mockMultipartFile, "testModule"));
     }
 }
